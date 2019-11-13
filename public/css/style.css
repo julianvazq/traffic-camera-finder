@@ -1,0 +1,160 @@
+/* ==== General Styling ====
+   ========================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #007ea7;
+  color: #fff;
+  font-family: "Raleway", sans-serif;
+}
+
+a {
+  text-decoration: none;
+  font-size: 1.3rem;
+  color: #fff;
+}
+
+/* ========== Nav ==========
+   ========================= */
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  justify-items: center;
+  background-color: #00171f;
+  padding: 1em;
+}
+
+.inner-nav {
+  display: flex;
+  justify-content: space-evenly;
+  list-style-type: none;
+}
+
+.inner-nav__item {
+  padding: 0 1em;
+  position: relative;
+}
+
+.underline {
+  border-bottom: 2px solid #fff;
+  padding-bottom: 0.3em;
+}
+
+/* ======== Header =========
+   ========================= */
+
+header {
+  text-align: center;
+  padding: 4em 0;
+}
+
+.title {
+  font-size: 3rem;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.4em;
+  letter-spacing: 10px;
+}
+
+.subtitle {
+  font-size: 2.5rem;
+  padding-top: 0.3em;
+  letter-spacing: 10px;
+  color: #00171f;
+}
+
+.title::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  width: 100%;
+  background-color: #fff;
+}
+
+/* ======= Sections ========
+   ========================= */
+
+section {
+  text-align: center;
+  background-color: #003459;
+  margin: 2em auto;
+  max-width: 900px;
+  padding: 2em 0;
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+}
+
+/* ======= Filter Section ========
+   ========================= */
+
+form > * {
+  /* margin: 1em 0; */
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.inner-form-container {
+  display: flex;
+  justify-content: center;
+  justify-items: baseline;
+  margin-top: 1.5em;
+}
+
+label {
+  font-size: 2rem;
+}
+
+select {
+  width: 300px;
+  height: 40px;
+  font-size: 1.2rem;
+}
+
+/* Resets button default styling */
+button {
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+/* Styles button from scratch */
+.btn {
+  display: inline-block;
+  border: solid 1px transparent;
+  border-radius: 4px;
+  margin-left: 0.5em;
+  padding: 0.5em 1em;
+  color: #fff;
+  background-color: #007ea7;
+}
+
+/* ======= Stats Section ========
+   ========================= */
+
+.stats-title {
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+.stats > * {
+  margin: 2em 0;
+}
+
+.stats {
+  text-align: left;
+  margin-left: 3em;
+}
