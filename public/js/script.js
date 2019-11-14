@@ -8,4 +8,11 @@ function loadData() {
     });
 }
 
+/* Test */
+// function loadDataTest() {
+//   fetch("/api/test")
+//     .then(res => res.json())
+//     .then(res => (document.querySelector(".title").innerText = res));
+// }
+
 document.querySelector(".btn").addEventListener("click", loadData);

@@ -50,6 +50,23 @@ nav {
   padding-bottom: 0.3em;
 }
 
+@media only screen and (max-width: 580px) {
+  .inner-nav__item {
+    font-size: 1.1rem;
+  }
+}
+
+@media only screen and (max-width: 510px) {
+  .inner-nav__item {
+    font-size: 1rem;
+    padding: 0 0.5em;
+  }
+
+  .underline {
+    padding-bottom: 0.2em;
+  }
+}
+
 /* ======== Header =========
    ========================= */
 
@@ -84,6 +101,13 @@ header {
   background-color: #fff;
 }
 
+@media only screen and (max-width: 702px) {
+  .title::after {
+    width: 60%;
+    left: 20%;
+  }
+}
+
 /* ======= Sections ========
    ========================= */
 
@@ -96,12 +120,14 @@ section {
   box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
 }
 
+@media only screen and (max-width: 900px) {
+  section {
+    margin: 2em 1em;
+  }
+}
+
 /* ======= Filter Section ========
    ========================= */
-
-form > * {
-  /* margin: 1em 0; */
-}
 
 form {
   display: flex;
@@ -123,6 +149,19 @@ select {
   width: 300px;
   height: 40px;
   font-size: 1.2rem;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 450px) {
+  label {
+    font-size: 1.5rem;
+  }
+
+  select {
+    width: 200px;
+    height: 40px;
+    font-size: 1rem;
+  }
 }
 
 /* Resets button default styling */
@@ -149,16 +188,45 @@ button {
 /* ======= Stats Section ========
    ========================= */
 
-.stats-title {
+.summary-title {
   font-size: 2rem;
   font-weight: 400;
+  padding-bottom: 0.8em;
+  position: relative;
 }
 
-.stats > * {
+.summary-title::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  bottom: 0;
+  left: 10%;
+  height: 3px;
+  width: 80%;
+  background-color: #fff;
+}
+
+.section-summary {
+  position: relative;
+}
+
+.summary > * {
   margin: 2em 0;
 }
 
-.stats {
+.summary {
+  position: relative;
   text-align: left;
-  margin-left: 3em;
+  left: 10%;
+  font-size: 1.2rem;
+}
+
+@media only screen and (max-width: 450px) {
+  .summary-title {
+    font-size: 1.5rem;
+  }
+
+  .summary {
+    font-size: 1rem;
+  }
 }

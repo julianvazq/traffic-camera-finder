@@ -39,4 +39,9 @@ app.get("/api", (req, res) => {
     });
 });
 
+/* Test */
+// app.get("/api/test", (req, res) => {
+//   res.send([1, 2, 3, 4, 5]);
+// });
+
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
