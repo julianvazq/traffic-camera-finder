@@ -1,18 +1,52 @@
-function loadData() {
-  console.log("fetch"); // confirm code is running on click
-  fetch("/api")
+let selectedInput = "speed";
+
+function loadSpeedCams(e) {
+  e.preventDefault();
+  fetch("/api/speed")
     .then(res => res.json())
     .then(res => {
-      console.log(res); // logging step to check what we got
+      console.log("Speed Cameras array: ", res); // logging step to check what we got
       return res;
     });
 }
 
-/* Test */
-// function loadDataTest() {
-//   fetch("/api/test")
-//     .then(res => res.json())
-//     .then(res => (document.querySelector(".title").innerText = res));
-// }
+function loadRedLightCams(e) {
+  e.preventDefault();
+  fetch("/api/redlight")
+    .then(res => res.json())
+    .then(res => {
+      console.log("Red Light Cameras array: ", res); // logging step to check what we got
+      return res;
+    });
+}
 
-document.querySelector(".btn").addEventListener("click", loadData);
+//Doesn´t work yet
+function loadBoth(e) {
+  e.preventDefault();
+
+  fetch("/api/speed")
+    .then(resSpeed => resSpeed.json())
+    .then(resSpeed => {
+      console.log("Speed Cameras array: ", resSpeed); // logging step to check what we got
+    }).then(fetch("/api/redlight"))
+    .then(resRedLight => resRedLight.json())
+    .then(resRedLight => {
+      console.log("Red Light Cameras array: ", resRedLight); // logging step to check what we got
+    });
+
+}
+
+document.querySelector(".btn").addEventListener("click", (e) => {
+  if(selectedInput === "speed") {
+    loadSpeedCams(e);
+  }
+  else if(selectedInput === "red light") {
+    loadRedLightCams(e);
+  }
+  else {
+    loadBoth(e);
+  }
+});
+document.querySelector(".input-field").addEventListener("change", (e) => {
+  selectedInput = e.target.value;
+})

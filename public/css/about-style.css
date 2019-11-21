@@ -38,9 +38,10 @@ nav {
   justify-items: center;
   background-color: #00171f;
   padding: 1em;
-  position: fixed;
   top: 0;
   width: 100%;
+  border-top: 4px solid #003459;
+  border-bottom: 4px solid #003459;
 }
 
 .inner-nav {

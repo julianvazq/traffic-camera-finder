@@ -23,15 +23,16 @@ app.use(express.static("public"));
 
 // Speed Cameras API endpoint: https://data.princegeorgescountymd.gov/resource/mnkf-cu5c.json
 // Red Light Cameras API endpoint: https://data.princegeorgescountymd.gov/resource/3a3p-zwvz.json
-// How to integrate with Google Maps: https://dev.socrata.com/blog/2014/05/31/google-maps.html
 
-app.get("/api", (req, res) => {
-  const baseURL = "https://api.umd.io/v0/bus/routes";
+//Get Speed Cameras data
+app.get("/api/speed", (req, res) => {
+  const baseURL = "https://data.princegeorgescountymd.gov/resource/mnkf-cu5c.json";
   fetch(baseURL)
-    .then(r => r.json())
-    .then(data => {
-      console.log(data);
-      res.send({ data: data });
+    .then(res => res.json())
+    .then(data => { 
+      const speedCams = data.map(speedCam => ({street_address: speedCam.street_address, posted_speed: speedCam.posted_speed,
+      enforcement: speedCam.enforcement, latitude: speedCam.location_1.latitude, longitude: speedCam.location_1.longitude}))
+      res.send(speedCams);
     })
     .catch(err => {
       console.log(err);
@@ -39,9 +40,20 @@ app.get("/api", (req, res) => {
     });
 });
 
-/* Test */
-// app.get("/api/test", (req, res) => {
-//   res.send([1, 2, 3, 4, 5]);
-// });
+//Get Red Light Cameras data
+app.get("/api/redlight", (req, res) => {
+  const baseURL = "https://data.princegeorgescountymd.gov/resource/3a3p-zwvz.json";
+  fetch(baseURL)
+    .then(res => res.json())
+    .then(data => { 
+      const redLightCams = data.map(redLightCam => ({street_address: redLightCam.description, 
+      latitude: redLightCam.location_1.latitude, longitude: redLightCam.location_1.longitude}))
+      res.send(redLightCams);
+    })
+    .catch(err => {
+      console.log(err);
+      res.redirect("/error");
+    });
+});
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
