@@ -20,19 +20,20 @@ function loadRedLightCams(e) {
     });
 }
 
-//Doesn´t work yet
 function loadBoth(e) {
   e.preventDefault();
 
   fetch("/api/speed")
     .then(resSpeed => resSpeed.json())
-    .then(resSpeed => {
-      console.log("Speed Cameras array: ", resSpeed); // logging step to check what we got
-    }).then(fetch("/api/redlight"))
+    .then(resSpeed => 
+      console.log("Speed Cameras array: ", resSpeed) // logging step to check what we got
+    );
+    
+    fetch("/api/redlight")
     .then(resRedLight => resRedLight.json())
-    .then(resRedLight => {
-      console.log("Red Light Cameras array: ", resRedLight); // logging step to check what we got
-    });
+    .then(resRedLight => 
+      console.log("Red Light Cameras array: ", resRedLight) // logging step to check what we got
+    );
 
 }
 
