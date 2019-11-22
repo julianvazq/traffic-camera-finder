@@ -1,7 +1,14 @@
 /* Code for initializting the map */
 /* code provided by the leaflet quickguide */
-/* coordinates here are for college park */
-let mymap = L.map("map").setView([38.987502, -76.942683], 10);
+/* coordinates here are for Joint Base Andrews in PG County */
+let mymap = L.map("map").setView([38.7965, -76.8836], 10);
+
+const testudo = L.icon({
+  iconUrl: "../icons/testudo.png",
+  iconSize: [50, 50],
+  iconAnchor: [25, 25],
+  popupAnchor: [0, -25]
+});
 
 L.tileLayer(
   "https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw",
@@ -17,8 +24,10 @@ L.tileLayer(
 /* testing some generic pop up and location */
 /* coordinates are set to UMD at the moment */
 var layer1 = L.layerGroup().addTo(mymap);
-let umd_mark = L.marker([38.987502, -76.942683]).addTo(mymap);
-umd_mark.bindPopup("University of Maryland").openPopup();
+let umd_mark = L.marker([38.987502, -76.942683], { icon: testudo }).addTo(
+  mymap
+);
+umd_mark.bindPopup("<b>University of Maryland</b>").openPopup();
 umd_mark.addTo(layer1);
 
 function loadSpeedCams(e) {
@@ -70,8 +79,9 @@ const mapSpeedData = (arg, clearMap) => {
 
   const speedCamIcon = L.icon({
     iconUrl: "../icons/speed-camera-icon.svg",
-    iconSize: [40, 80],
-    iconAnchor: [22, 94]
+    iconSize: [30, 70],
+    iconAnchor: [25, 25],
+    popupAnchor: [-10, -3]
   });
 
   /* loop that displays all of the map points as pop ups */
@@ -102,8 +112,9 @@ const mapRedLightData = (arg, clearMap) => {
 
   const redLightCamIcon = L.icon({
     iconUrl: "../icons/red-light-camera-icon.svg",
-    iconSize: [40, 80],
-    iconAnchor: [22, 94]
+    iconSize: [30, 70],
+    iconAnchor: [25, 25],
+    popupAnchor: [-10, -3]
   });
 
   /* loop that displays all of the map points as markers */
@@ -123,10 +134,16 @@ let selectedInput = "speed";
 document.querySelector(".btn").addEventListener("click", e => {
   if (selectedInput === "speed") {
     loadSpeedCams(e);
+    document.querySelector(".speed=camera-count").style.display = "flex";
+    document.querySelector(".red-light-count").style.display = "none";
   } else if (selectedInput === "red light") {
     loadRedLightCams(e);
+    document.querySelector(".red-light-count").style.display = "flex";
+    document.querySelector(".speed-camera-count").style.display = "none";
   } else {
     loadBoth(e);
+    document.querySelector(".red-light-count").style.display = "flex";
+    document.querySelector(".speed-camera-count").style.display = "flex";
   }
 });
 document.querySelector(".input-field").addEventListener("change", e => {
