@@ -3,19 +3,23 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
   background-color: #007ea7;
   color: #fff;
   font-family: "Raleway", sans-serif;
 }
+
 a {
   text-decoration: none;
   font-size: 1.3rem;
   color: #fff;
 }
+
 .section-mission {
   margin-top: 6em;
 }
+
 section {
   text-align: center;
   background-color: #003459;
@@ -24,14 +28,25 @@ section {
   padding: 2em 0;
   box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
 }
+
 @media only screen and (max-width: 900px) {
   section {
-  margin: 2em 1em;
+    margin: 2em 1em;
   }
 }
+
 li {
   list-style-type: none;
 }
+
+.logo {
+  width: 70px;
+  height: 70px;
+  margin-left: 2em;
+  padding: 0.2em;
+  background-color: #007ea7;
+}
+
 nav {
   display: flex;
   justify-content: space-between;
@@ -50,8 +65,15 @@ nav {
   list-style-type: none;
 }
 
+.inner-nav a {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .inner-nav__item {
   padding: 0 1em;
+  margin: 0 3em;
   position: relative;
 }
 
@@ -60,22 +82,50 @@ nav {
   padding-bottom: 0.3em;
 }
 
-@media only screen and (max-width: 580px) {
+@media only screen and (max-width: 900px) {
   .inner-nav__item {
-      font-size: 1.1rem;
+    margin: 0 1em;
+  }
+}
+
+@media only screen and (max-width: 720px) {
+  .inner-nav__item {
+    margin: 0;
+  }
+}
+
+@media only screen and (max-width: 580px) {
+  .logo {
+    margin-left: 1em;
+  }
+
+  .inner-nav__item {
+    font-size: 1.1rem;
   }
 }
 
 @media only screen and (max-width: 510px) {
   .inner-nav__item {
-      font-size: 1rem;
-      padding: 0 0.5em;
+    font-size: 1rem;
+    padding: 0 0.5em;
   }
 
   .underline {
-      padding-bottom: 0.2em;
+    padding-bottom: 0.2em;
   }
 }
+
+@media only screen and (max-width: 410px) {
+  nav {
+    flex-direction: column;
+    padding-left: 0.5em;
+  }
+
+  .logo {
+    margin-bottom: 0.5em;
+  }
+}
+
 .list-members {
   display: flex;
   justify-content: space-evenly;
@@ -86,4 +136,13 @@ nav {
 }
 .content-contact {
   margin: 2em;
+}
+
+footer {
+  text-align: center;
+  background-color: #00171f;
+  border-top: 4px solid #003459;
+  border-bottom: 4px solid #003459;
+  padding: 2em;
+  margin-top: 7em;
 }

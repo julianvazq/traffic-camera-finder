@@ -15,26 +15,26 @@ body {
   background-color: #007ea7;
   color: #fff;
   font-family: "Raleway", sans-serif;
+  z-index: -9;
+  position: relative;
 }
 
 a {
   text-decoration: none;
   font-size: 1.3rem;
   color: #fff;
-
 }
 
 /* ========== Nav ==========
    ========================= */
 
 .logo {
-    width: 70px;
-    height: 70px;
-    margin-left: 2em;
-    padding: 0.2em;
-    /* border: 4px solid #007ea7; */
-    background-color: #007ea7;
-  }
+  width: 70px;
+  height: 70px;
+  margin-left: 2em;
+  padding: 0.2em;
+  background-color: #007ea7;
+}
 
 nav {
   display: flex;
@@ -52,7 +52,7 @@ nav {
   list-style-type: none;
 }
 
-.inner-nav a{
+.inner-nav a {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -60,6 +60,7 @@ nav {
 
 .inner-nav__item {
   padding: 0 1em;
+  margin: 0 3em;
   position: relative;
 }
 
@@ -68,7 +69,23 @@ nav {
   padding-bottom: 0.3em;
 }
 
+@media only screen and (max-width: 900px) {
+  .inner-nav__item {
+    margin: 0 1em;
+  }
+}
+
+@media only screen and (max-width: 720px) {
+  .inner-nav__item {
+    margin: 0;
+  }
+}
+
 @media only screen and (max-width: 580px) {
+  .logo {
+    margin-left: 1em;
+  }
+
   .inner-nav__item {
     font-size: 1.1rem;
   }
@@ -85,12 +102,39 @@ nav {
   }
 }
 
+@media only screen and (max-width: 410px) {
+  nav {
+    flex-direction: column;
+    padding-left: 0.5em;
+  }
+
+  .logo {
+    margin-bottom: 0.5em;
+  }
+}
+
 /* ======== Header =========
    ========================= */
 
 header {
   text-align: center;
-  padding: 4em 0;
+  padding: 6em 0 13em 0;
+  background: url(../images/roads.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  z-index: -2;
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
 .title {
@@ -106,7 +150,7 @@ header {
   font-size: 2.5rem;
   padding-top: 0.3em;
   letter-spacing: 10px;
-  color: #00171f;
+  color: #000;
 }
 
 .title::after {
@@ -130,7 +174,7 @@ header {
 /* ======= Sections ========
    ========================= */
 
-section{
+section {
   text-align: center;
   background-color: #003459;
   margin: 2em auto;
@@ -147,6 +191,12 @@ section{
 
 /* ======= Filter Section ========
    ========================= */
+
+.section-filter {
+  margin-bottom: -5em;
+  margin-top: -6em;
+  z-index: 0;
+}
 
 form {
   display: flex;
@@ -234,6 +284,15 @@ button {
 .section-map {
   padding: 0;
   border: 2px solid #003459;
+  z-index: 999;
+}
+
+.section-map-wrapper {
+  background-color: #00171f;
+  padding: 6em 0 2em 0;
+  margin-bottom: 6em;
+  z-index: -1;
+  position: relative;
 }
 
 /* ======= Stats Section ========
@@ -281,7 +340,6 @@ button {
   font-weight: bold;
 }
 
-
 @media only screen and (max-width: 450px) {
   .summary-title {
     font-size: 1.5rem;
@@ -295,12 +353,15 @@ button {
 /* ======== Footer =========
    ========================= */
 
-  footer {
-    text-align: center;
-    background-color: #00171f;
-    border-top: 4px solid #003459;
-    border-bottom: 4px solid #003459;
-    padding: 2em;
-    margin-top: 7em;
-  }
+footer {
+  text-align: center;
+  background-color: #00171f;
+  border-top: 4px solid #003459;
+  border-bottom: 4px solid #003459;
+  padding: 2em;
+  margin-top: 7em;
+}
 
+footer h2 {
+  margin-bottom: 1em;
+}
