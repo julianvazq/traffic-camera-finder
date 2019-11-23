@@ -134,7 +134,7 @@ let selectedInput = "speed";
 document.querySelector(".btn").addEventListener("click", e => {
   if (selectedInput === "speed") {
     loadSpeedCams(e);
-    document.querySelector(".speed=camera-count").style.display = "flex";
+    document.querySelector(".speed-camera-count").style.display = "flex";
     document.querySelector(".red-light-count").style.display = "none";
   } else if (selectedInput === "red light") {
     loadRedLightCams(e);

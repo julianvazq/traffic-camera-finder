@@ -55,8 +55,8 @@ nav {
   padding: 1em;
   top: 0;
   width: 100%;
-  border-top: 4px solid #003459;
-  border-bottom: 4px solid #003459;
+  border-top: 2px solid #003459;
+  border-bottom: 2px solid #003459;
 }
 
 .inner-nav {
@@ -141,8 +141,8 @@ nav {
 footer {
   text-align: center;
   background-color: #00171f;
-  border-top: 4px solid #003459;
-  border-bottom: 4px solid #003459;
+  border-top: 2px solid #003459;
+  border-bottom: 2px solid #003459;
   padding: 2em;
   margin-top: 7em;
 }
