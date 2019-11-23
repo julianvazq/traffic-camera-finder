@@ -239,6 +239,17 @@ select {
   border-color: #888;
 }
 
+@media only screen and (max-width: 900px) {
+  .section-filter {
+    padding: 1em;
+    margin-bottom: -5em;
+    margin-top: -6em;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+  }
+}
+
 @media only screen and (max-width: 450px) {
   label {
     font-size: 1.5rem;
@@ -295,6 +306,12 @@ button {
   margin-bottom: 6em;
   z-index: -1;
   position: relative;
+}
+
+@media only screen and (max-width: 650px) {
+  .section-map-wrapper {
+    margin-bottom: 3em;
+  }
 }
 
 /* ======= Stats Section ========
@@ -374,4 +391,10 @@ footer {
 
 footer h2 {
   margin-bottom: 1em;
+}
+
+@media only screen and (max-width: 650px) {
+  footer {
+    margin-top: 3em;
+  }
 }
