@@ -56,4 +56,23 @@ app.get("/api/redlight", (req, res) => {
     });
 });
 
+// Get Police Stations
+app.get("/api/police", (req, res) => {
+  const baseURL = "https://data.princegeorgescountymd.gov/resource/qkn8-5mhu.json";
+  fetch(baseURL)
+    .then(res => res.json())
+    .then(data => { 
+      const policeStations = data.map(station => 
+        ({name: station.station_name, telephone: station.telephone, street_address: station.station_address.human_address, 
+      latitude: station.station_address.latitude, longitude: station.station_address.longitude})
+      );
+      console.log(policeStations);
+      res.send(policeStations);
+    })
+    .catch(err => {
+      console.log(err);
+      res.redirect("/error");
+    });
+});
+
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));

@@ -38,7 +38,7 @@ function loadSpeedCams(e) {
       console.log("Speed Cameras array: ", res); // logging step to check what we got
       return res;
     })
-    .then(res => mapSpeedData(res, true));
+    .then(res => mapSpeedData(res));
 }
 
 function loadRedLightCams(e) {
@@ -49,11 +49,14 @@ function loadRedLightCams(e) {
       console.log("Red Light Cameras array: ", res); // logging step to check what we got
       return res;
     })
-    .then(res => mapRedLightData(res, true));
+    .then(res => mapRedLightData(res));
 }
 
 function loadBoth(e) {
   e.preventDefault();
+
+  // We clear the map here to avoid mapRedLightData clearing the speed cam icons
+  layer1.clearLayers();
 
   fetch("/api/speed")
     .then(resSpeed => resSpeed.json())
@@ -72,10 +75,23 @@ function loadBoth(e) {
     .then(resRedLight => mapRedLightData(resRedLight, false));
 }
 
-const mapSpeedData = (arg, clearMap) => {
+function loadPoliceStations(e) {
+  e.preventDefault();
+
+  fetch("/api/police")
+    .then(resPolice => resPolice.json())
+    .then(resPolice => {
+      console.log("Police stations array: ", resPolice); // logging step to check what we got
+      return resPolice;
+    })
+    .then(resPolice => mapPoliceData(resPolice));
+  }
+
+const mapSpeedData = (arg, clearMap = true) => {
+    
   if (clearMap) {
     layer1.clearLayers();
-  }
+    }
 
   const speedCamIcon = L.icon({
     iconUrl: "../icons/speed-camera-icon.svg",
@@ -105,9 +121,10 @@ const mapSpeedData = (arg, clearMap) => {
   }
 };
 
-const mapRedLightData = (arg, clearMap) => {
+const mapRedLightData = (arg, clearMap = true) => {
+  
   if (clearMap) {
-    layer1.clearLayers();
+  layer1.clearLayers();
   }
 
   const redLightCamIcon = L.icon({
@@ -129,6 +146,33 @@ const mapRedLightData = (arg, clearMap) => {
   }
 };
 
+const mapPoliceData = (arg) => {
+    layer1.clearLayers();
+
+  const policeIcon = L.icon({
+    iconUrl: "../icons/police-station-icon.svg",
+    iconSize: [30, 70],
+    iconAnchor: [25, 25],
+    popupAnchor: [-10, -3]
+  });
+
+  /* loop that displays all of the map points as markers */
+  for (let i = 0; i < arg.length; i += 1) {
+    umd_mark = L.marker([arg[i].latitude, arg[i].longitude], {
+      icon: policeIcon
+    }).addTo(mymap);
+    umd_mark
+      .bindPopup( "<b>POLICE STATION</b></br>" +
+      "<b>Station name</b>: " +
+      arg[i].name +
+      "</br>" +
+      "<b>Telephone:</b>: " +
+      arg[i].telephone)
+      .openPopup();
+    umd_mark.addTo(layer1);
+  }
+};
+
 let selectedInput = "speed";
 
 document.querySelector(".btn").addEventListener("click", e => {
@@ -140,6 +184,8 @@ document.querySelector(".btn").addEventListener("click", e => {
     loadRedLightCams(e);
     document.querySelector(".red-light-count").style.display = "flex";
     document.querySelector(".speed-camera-count").style.display = "none";
+   } else if (selectedInput === "police stations") {
+      loadPoliceStations(e);
   } else {
     loadBoth(e);
     document.querySelector(".red-light-count").style.display = "flex";
