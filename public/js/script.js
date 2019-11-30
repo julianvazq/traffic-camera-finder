@@ -135,8 +135,7 @@ const mapSpeedData = (arg, clearMap = true) => {
           "</br>" +
           "<b>Enforced speed</b>: " +
           arg[i].enforcement
-      )
-      .openPopup();
+      );
     umd_mark.addTo(layer1);
   }
 };
@@ -160,8 +159,7 @@ const mapRedLightData = (arg, clearMap = true) => {
       icon: redLightCamIcon
     }).addTo(mymap);
     umd_mark
-      .bindPopup("<b>RED LIGHT CAMERA</b></br>" + arg[i].street_address)
-      .openPopup();
+      .bindPopup("<b>RED LIGHT CAMERA</b></br>" + arg[i].street_address);
     umd_mark.addTo(layer1);
   }
 };
@@ -187,8 +185,7 @@ const mapPoliceData = (arg) => {
       arg[i].name +
       "</br>" +
       "<b>Telephone:</b>: " +
-      arg[i].telephone)
-      .openPopup();
+      arg[i].telephone);
     umd_mark.addTo(layer1);
   }
 };
