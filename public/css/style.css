@@ -331,6 +331,7 @@ button {
   font-weight: 400;
   padding-bottom: 1.2em;
   position: relative;
+  text-align: center;
 }
 
 .summary-title::after {
@@ -344,36 +345,21 @@ button {
   background-color: #fff;
 }
 
-.section-summary {
-  position: relative;
-}
-
 .summary {
+  text-align: left;
+  width: 80%;
+  margin: 2em auto;
+}
+
+.summary-list {
+  list-style-type: none;
+  margin: 2em auto;
+}
+
+.summary-list li {
   display: flex;
-  justify-content: space-evenly;
-  font-size: 1.2rem;
-  margin: 1.5em 0;
-}
-
-.speed-camera-count,
-.red-light-count {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  height: 100px;
-}
-
-.speed-camera-count span,
-.red-light-count span {
-  letter-spacing: 3px;
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
-/* Only display speed cameras count on load 
-(because that's what's selected by default) */
-.red-light-count {
-  display: none;
+  justify-content: space-between;
+  margin: 1em 0;
 }
 
 @media only screen and (max-width: 450px) {
