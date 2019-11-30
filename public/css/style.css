@@ -13,7 +13,7 @@ https://coolors.co/ffffff-00171f-003459-007ea7-00a8e8
 
 body {
   background-color: #007ea7;
-  color: #fff;
+  color: #fdfdfd;
   font-family: "Raleway", sans-serif;
   z-index: -9;
   position: relative;
@@ -22,7 +22,7 @@ body {
 a {
   text-decoration: none;
   font-size: 1.3rem;
-  color: #fff;
+  color: #fdfdfd;
 }
 
 /* ========== Nav ==========
@@ -69,7 +69,7 @@ nav {
 }
 
 .underline {
-  border-bottom: 2px solid #fff;
+  border-bottom: 2px solid #fdfdfd;
   padding-bottom: 0.3em;
 }
 
@@ -163,7 +163,7 @@ header::before {
   left: 0;
   height: 3px;
   width: 100%;
-  background-color: #fff;
+  background-color: #fdfdfd;
 }
 
 @media only screen and (max-width: 702px) {
@@ -225,14 +225,14 @@ select {
   font-size: 1.2rem;
   padding-left: 0.3em;
   cursor: pointer;
-  border: 1px solid #fff;
+  border: 1px solid #fdfdfd;
   box-shadow: 0 1px 0 1px rgba(0, 0, 0, 0.04);
   border-radius: 0.2em;
   appearance: none;
   -moz-appearance: none;
   -webkit-appearance: none;
   background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E"),
-    linear-gradient(to bottom, #ffffff 0%, #e5e5e5 100%);
+    linear-gradient(to bottom, #fdfdfd 0%, #e5e5e5 100%);
   background-repeat: no-repeat, repeat;
   background-position: right 0.7em top 50%, 0 0;
   background-size: 0.65em auto, 100%;
@@ -282,7 +282,7 @@ button {
   border-radius: 4px;
   margin-left: 0.5em;
   padding: 0.5em 1em;
-  color: #fff;
+  color: #fdfdfd;
   background-color: #007ea7;
 }
 
@@ -331,6 +331,7 @@ button {
   font-weight: 400;
   padding-bottom: 1.2em;
   position: relative;
+  text-align: center;
 }
 
 .summary-title::after {
@@ -341,39 +342,38 @@ button {
   left: 10%;
   height: 3px;
   width: 80%;
-  background-color: #fff;
-}
-
-.section-summary {
-  position: relative;
+  background-color: #fdfdfd;
 }
 
 .summary {
+  text-align: left;
+  width: 80%;
+  margin: 2em auto;
+}
+
+.summary-list {
+  list-style-type: none;
+  margin: 2em auto;
+}
+
+.summary-list li {
   display: flex;
-  justify-content: space-evenly;
-  font-size: 1.2rem;
-  margin: 1.5em 0;
+  padding: 2em 1em;
+  margin: 1em 0;
+  border-bottom: 1px solid #fdfdfd;
+  background-color: #fdfdfd;
+  color: #003459;
+  border-radius: 10px;
 }
 
-.speed-camera-count,
-.red-light-count {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  height: 100px;
+.summary-list li div {
+  display: inline-block;
+  width: 35%;
+  text-align: center;
 }
 
-.speed-camera-count span,
-.red-light-count span {
-  letter-spacing: 3px;
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
-/* Only display speed cameras count on load 
-(because that's what's selected by default) */
-.red-light-count {
-  display: none;
+.bold {
+  font-weight: 600;
 }
 
 @media only screen and (max-width: 450px) {
