@@ -6,14 +6,14 @@
 
 body {
   background-color: #007ea7;
-  color: #fff;
+  color: #fdfdfd;
   font-family: "Raleway", sans-serif;
 }
 
 a {
   text-decoration: none;
   font-size: 1.3rem;
-  color: #fff;
+  color: #fdfdfd;
 }
 
 .section-mission {
@@ -83,7 +83,7 @@ nav {
 }
 
 .underline {
-  border-bottom: 2px solid #fff;
+  border-bottom: 2px solid #fdfdfd;
   padding-bottom: 0.3em;
 }
 
@@ -142,7 +142,7 @@ nav {
 .doc_title {
   text-decoration: none;
   font-size: 4rem;
-  color: #fff;
+  color: #fdfdfd;
 }
 
 .title {

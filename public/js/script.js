@@ -208,19 +208,19 @@ function displaySummary(objArray, clearSummary = true) {
   if (selectedInput === "speed") {
     summaryTitle = "SPEED CAMERAS";
     listItems = 
-      objArray.map(cam => `<li><span>${cam.street_address}</span><div><span>Posted speed: ${cam.posted_speed}</span><span>Enforced speed: ${cam.enforcement}</span></div></li>`)
+      objArray.map(cam => `<li><div><span class="bold">${cam.street_address}</span class="bold"></div><div><span class="bold">Posted speed</span>: ${cam.posted_speed}</div><div><span class="bold">Enforced speed</span>: ${cam.enforcement}</div></li>`)
   }
   // Display RED LIGHT CAMERA summary
   else if (selectedInput === "red light") {
     summaryTitle = "RED LIGHT CAMERAS";
     listItems = 
-      objArray.map(cam => `<li><span>${cam.street_address}</span></li>`)
+      objArray.map(cam => `<li style="justify-content:center"><div><span class="bold">${cam.street_address}</span></div></li>`)
   }
 
   else if (selectedInput === "police stations") {
     summaryTitle = "POLICE STATIONS";
     listItems = 
-      objArray.map(station => `<li><span>Station name: ${station.name}</span><span>Telephone: ${station.telephone}</span></li>`)
+      objArray.map(station => `<li style="justify-content:space-evenly"><div><span class="bold">Station name</span>: ${station.name}</div><div><span class="bold">Telephone</span>: ${station.telephone}</div></li>`);
   }
   
   // Update DOM 
