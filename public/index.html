@@ -5,27 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link
-      href="https://fonts.googleapis.com/css?family=Raleway&display=swap"
+      href="https://fonts.googleapis.com/css?family=Oswald:500|Raleway:400,600&display=swap"
       rel="stylesheet"
     />
     <title>Traffic Camera Finder</title>
+    <script
+      src="https://kit.fontawesome.com/3fcc4317d9.js"
+      crossorigin="anonymous"
+    ></script>
     <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
-    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+      integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+      crossorigin=""
+    />
+    <script
+      src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+      integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+      crossorigin=""
+    ></script>
   </head>
   <body>
     <nav>
       <div>
-        <a href="index.html"><img class="logo" src="icons/logo.svg" /></a>
+        <!-- <a href="index.html"><img class="logo" src="icons/logo.svg" /></a> -->
+        <a href="index.html"
+          ><img class="logo" src="icons/pg-county-logo.svg"
+        /></a>
       </div>
       <ul class="inner-nav">
-        <a href="index.html"><li class="inner-nav__item underline">Finder</li></a>
+        <a href="index.html"
+          ><li class="inner-nav__item underline">Finder</li></a
+        >
         <a href="about.html"> <li class="inner-nav__item">About</li></a>
         <a href="doc.html"> <li class="inner-nav__item">Documentation</li></a>
       </ul>
     </nav>
     <header>
-      <h1 class="title">Traffic Camera Finder</h1>
+      <h1 class="title">TRAFFIC CAMERA FINDER</h1>
       <h2 class="subtitle">PG County</h2>
     </header>
     <!-- Filters -->
@@ -34,10 +52,11 @@
         <label>CAMERA TYPE</label>
         <div class="inner-form-container">
           <select class="input-field">
-            <option value="speed">Speed</option>
-            <option value="red light">Red Light</option>
-            <option value="both">Both</option>
+            <option value="speed">Speed Cameras</option>
+            <option value="red light">Red Light Cameras</option>
+            <option value="speed and red light">All Traffic Cameras</option>
             <option value="police stations">Police Stations</option>
+            <option value="fire stations">Fire Stations</option>
           </select>
           <button class="btn">GO</button>
         </div>
@@ -45,34 +64,97 @@
     </section>
     <!-- Map -->
     <div class="section-map-wrapper">
-      <section class = "section-map">
+      <section class="section-map">
         <div id="map"></div>
       </section>
     </div>
     <!-- Stats -->
-    <section class="section-summary">
-      <h2 class="summary-title">SUMMARY</h2>
-      <div class="summary">
-        <div class="speed-camera-count">
-          <p>Speed Cameras</p> 
-          <span>71</span>
+    <div class="summary-wrapper">
+      <section class="section-summary">
+        <h2 class="summary-title">SUMMARY</h2>
+        <div class="summary">
+          <h2 class="list-title"></h2>
+          <ul class="summary-list">
+            <li>Please select an option above.</li>
+          </ul>
         </div>
-        <div class="red-light-count">
-          <p>Red Light Cameras</p>
-          <span>29</span>
-      </div>
-      </div>
-    </section>
+      </section>
+    </div>
     <footer>
       <h2>Contributions</h2>
-      <p><div>Logo made by <a href="https://www.flaticon.com/authors/smashicons" title="Smashicons">Smashicons</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div></p>
-      <p><div>Speed Cam icons made by <a href="https://www.flaticon.com/<?=_('authors/')?>pixel-perfect" title="Pixel perfect">Pixel perfect</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div></p>
-      <p><div>Red Light Cam icons made by <a href="https://www.flaticon.com/authors/bqlqn" title="bqlqn">bqlqn</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div></p>
-      <div>Police Station icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
-      <div>Fire Station icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+      <div class="contributions-container">
+        <div>
+          <i class="far fa-check-square"></i>
+          <p class="contribution">
+            <span class="icon tic"></span>
+            Logo made by
+            <a
+              href="https://www.flaticon.com/authors/smashicons"
+              title="Smashicons"
+              >Smashicons</a
+            >
+            from
+            <a href="https://www.flaticon.com/" title="Flaticon"
+              >www.flaticon.com</a
+            >
+          </p>
+        </div>
+        <div>
+          <i class="far fa-check-square"></i>
+          <p class="contribution">
+            Speed Camera icons made by
+            <a
+              href="https://www.flaticon.com/<?=_('authors/')?>pixel-perfect"
+              title="Pixel perfect"
+              >Pixel perfect</a
+            >
+            from
+            <a href="https://www.flaticon.com/" title="Flaticon"
+              >www.flaticon.com</a
+            >
+          </p>
+        </div>
+        <div>
+          <i class="far fa-check-square"></i>
+          <p class="contribution">
+            Red Light Camera icons made by
+            <a href="https://www.flaticon.com/authors/bqlqn" title="bqlqn"
+              >bqlqn</a
+            >
+            from
+            <a href="https://www.flaticon.com/" title="Flaticon"
+              >www.flaticon.com</a
+            >
+          </p>
+        </div>
+        <div>
+          <i class="far fa-check-square"></i>
+          <p class="contribution">
+            Police Station icons made by
+            <a href="https://www.flaticon.com/authors/freepik" title="Freepik"
+              >Freepik</a
+            >
+            from
+            <a href="https://www.flaticon.com/" title="Flaticon"
+              >www.flaticon.com</a
+            >
+          </p>
+        </div>
+        <div>
+          <i class="far fa-check-square"></i>
+          <p class="contribution">
+            Fire Station icons made by
+            <a href="https://www.flaticon.com/authors/freepik" title="Freepik"
+              >Freepik</a
+            >
+            from
+            <a href="https://www.flaticon.com/" title="Flaticon"
+              >www.flaticon.com</a
+            >
+          </p>
+        </div>
+      </div>
     </footer>
     <script src="js/script.js"></script>
   </body>
 </html>
-
-

@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/julianvazq/traffic-camera-finder#readme",
   "dependencies": {
+    "eslint": "^6.7.2",
     "express": "^4.17.1",
     "node-fetch": "^2.6.0"
   },

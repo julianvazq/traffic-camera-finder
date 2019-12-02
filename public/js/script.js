@@ -38,7 +38,10 @@ function loadSpeedCams(e) {
       console.log("Speed Cameras array: ", res); // logging step to check what we got
       return res;
     })
-    .then(res => mapSpeedData(res));
+    .then(res => {
+      mapSpeedData(res);
+      return res;
+    }).then(res => displaySummary(res));
 }
 
 function loadRedLightCams(e) {
@@ -49,7 +52,10 @@ function loadRedLightCams(e) {
       console.log("Red Light Cameras array: ", res); // logging step to check what we got
       return res;
     })
-    .then(res => mapRedLightData(res));
+    .then(res => {
+      mapRedLightData(res);
+      return res;})
+    .then(res => displaySummary(res));
 }
 
 function loadBoth(e) {
@@ -58,13 +64,20 @@ function loadBoth(e) {
   // We clear the map here to avoid mapRedLightData clearing the speed cam icons
   layer1.clearLayers();
 
+  // Clear display here for same reason as above
+  document.querySelector(".summary").innerHTML = "";
+
   fetch("/api/speed")
     .then(resSpeed => resSpeed.json())
     .then(resSpeed => {
       console.log("Speed Cameras array: ", resSpeed); // logging step to check what we got
       return resSpeed;
     })
-    .then(resSpeed => mapSpeedData(resSpeed, false));
+    .then(resSpeed => {
+      mapSpeedData(resSpeed, false);
+      selectedInput = "speed";
+      return resSpeed;})
+    .then(resSpeed => displaySummary(resSpeed, false));
 
   fetch("/api/redlight")
     .then(resRedLight => resRedLight.json())
@@ -72,7 +85,11 @@ function loadBoth(e) {
       console.log("Red Light Cameras array: ", resRedLight); // logging step to check what we got
       return resRedLight;
     })
-    .then(resRedLight => mapRedLightData(resRedLight, false));
+    .then(resRedLight => {
+      mapRedLightData(resRedLight, false);
+      selectedInput = "red light";
+      return resRedLight;})
+    .then(resRedLight => displaySummary(resRedLight, false));
 }
 
 function loadPoliceStations(e) {
@@ -84,8 +101,26 @@ function loadPoliceStations(e) {
       console.log("Police stations array: ", resPolice); // logging step to check what we got
       return resPolice;
     })
-    .then(resPolice => mapPoliceData(resPolice));
+    .then(resPolice => {
+      mapPoliceData(resPolice);
+      return resPolice;})
+      .then(resPolice => displaySummary(resPolice));
   }
+
+  function loadFireStations(e) {
+    e.preventDefault();
+  
+    fetch("/api/fire")
+      .then(resFire => resFire.json())
+      .then(resFire => {
+        console.log("Fire stations array: ", resFire); // logging step to check what we got
+        return resFire;
+      })
+      .then(resFire => {
+        mapFireData(resFire);
+        return resFire;})
+        .then(resFire => displaySummary(resFire));
+    }
 
 const mapSpeedData = (arg, clearMap = true) => {
     
@@ -115,8 +150,7 @@ const mapSpeedData = (arg, clearMap = true) => {
           "</br>" +
           "<b>Enforced speed</b>: " +
           arg[i].enforcement
-      )
-      .openPopup();
+      );
     umd_mark.addTo(layer1);
   }
 };
@@ -140,8 +174,7 @@ const mapRedLightData = (arg, clearMap = true) => {
       icon: redLightCamIcon
     }).addTo(mymap);
     umd_mark
-      .bindPopup("<b>RED LIGHT CAMERA</b></br>" + arg[i].street_address)
-      .openPopup();
+      .bindPopup("<b>RED LIGHT CAMERA</b></br>" + arg[i].street_address);
     umd_mark.addTo(layer1);
   }
 };
@@ -167,29 +200,103 @@ const mapPoliceData = (arg) => {
       arg[i].name +
       "</br>" +
       "<b>Telephone:</b>: " +
-      arg[i].telephone)
-      .openPopup();
+      arg[i].telephone);
     umd_mark.addTo(layer1);
   }
 };
+
+const mapFireData = (arg) => {
+  layer1.clearLayers();
+
+const fireIcon = L.icon({
+  iconUrl: "../icons/fire-station-icon.svg",
+  iconSize: [30, 70],
+  iconAnchor: [25, 25],
+  popupAnchor: [-10, -3]
+});
+
+/* loop that displays all of the map points as markers */
+for (let i = 0; i < arg.length; i += 1) {
+  umd_mark = L.marker([arg[i].latitude, arg[i].longitude], {
+    icon: fireIcon
+  }).addTo(mymap);
+  umd_mark
+    .bindPopup( "<b>FIRE STATION</b></br>" +
+    "<b>Station number</b>: " +
+    arg[i].station_number +
+    "</br>" +
+    "<b>Station name</b>: " +
+    arg[i].name +
+    "</br>" +
+    "<b>Medical unit</b>: " +
+    arg[i].medical_unit_onsite +
+    "</br>"+
+    "<b>Ambulance</b>: " +
+    arg[i].ambulance_onsite
+    );
+  umd_mark.addTo(layer1);
+}
+};
+
+function displaySummary(objArray, clearSummary = true) {
+
+  const summaryDiv = document.querySelector(".summary");
+
+  if (clearSummary) {
+  summaryDiv.innerHTML = "";
+  }
+
+  let summaryTitle = "";
+  let listItems = [];
+
+  // Display SPEED CAMERA summary
+  if (selectedInput === "speed") {
+    summaryTitle = "SPEED CAMERAS";
+    listItems = 
+      objArray.map(cam => `<li><div><span class="bold">${cam.street_address}</span class="bold"></div><div><span class="bold">Posted speed</span>: ${cam.posted_speed}</div><div><span class="bold">Enforced speed</span>: ${cam.enforcement}</div></li>`)
+  }
+  // Display RED LIGHT CAMERA summary
+  else if (selectedInput === "red light") {
+    summaryTitle = "RED LIGHT CAMERAS";
+    listItems = 
+      objArray.map(cam => `<li style="justify-content:center"><div><span class="bold">${cam.street_address}</span></div></li>`)
+  }
+  // Display POLICE STATIONS summary
+  else if (selectedInput === "police stations") {
+    summaryTitle = "POLICE STATIONS";
+    listItems = 
+      objArray.map(station => `<li style="justify-content:space-evenly"><div><span class="bold">Station name</span>: ${station.name}</div><div><span class="bold">Telephone</span>: ${station.telephone}</div></li>`);
+  }
+
+  // Display FIRE STATIONS summary
+  else if (selectedInput === "fire stations") {
+    summaryTitle = "FIRE STATIONS";
+    listItems = 
+      objArray.map(f_station => 
+        `<li style="justify-content:space-evenly"><div><span class="bold">Station number</span>: ${f_station.station_number ? f_station.station_number : "-" }</div><div><span class="bold">Station name</span>: ${f_station.name}</div>
+        </div><div><span class="bold">Medical Unit</span>: ${f_station.medical_unit_onsite === "Y" ? "Yes" : "No" }</div><div><span class="bold">Ambulance</span>: ${f_station.ambulance_onsite === "Y" ? "Yes" : "No" }</div></li>`
+      );
+  }
+  
+  // Update DOM 
+  summaryDiv.innerHTML += `
+  <h2 class="list-title">${summaryTitle}</h2>
+  <ul class="summary-list">${listItems.join("")}</ul>`;
+}
 
 let selectedInput = "speed";
 
 document.querySelector(".btn").addEventListener("click", e => {
   if (selectedInput === "speed") {
     loadSpeedCams(e);
-    document.querySelector(".speed-camera-count").style.display = "flex";
-    document.querySelector(".red-light-count").style.display = "none";
   } else if (selectedInput === "red light") {
     loadRedLightCams(e);
-    document.querySelector(".red-light-count").style.display = "flex";
-    document.querySelector(".speed-camera-count").style.display = "none";
-   } else if (selectedInput === "police stations") {
-      loadPoliceStations(e);
+  } else if (selectedInput === "police stations") {
+    loadPoliceStations(e);
+  } else if (selectedInput === "fire stations") {
+    loadFireStations(e);
   } else {
     loadBoth(e);
-    document.querySelector(".red-light-count").style.display = "flex";
-    document.querySelector(".speed-camera-count").style.display = "flex";
   }
 });
 document.querySelector(".input-field").addEventListener("change", e => {

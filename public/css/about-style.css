@@ -5,15 +5,45 @@
 }
 
 body {
-  background-color: #007ea7;
-  color: #fff;
+  background: linear-gradient(
+    0deg,
+    rgba(0, 126, 167, 1) 0%,
+    rgba(2, 116, 153, 1) 1%,
+    rgba(4, 102, 134, 1) 3%,
+    rgba(2, 87, 121, 1) 9%,
+    rgba(0, 65, 103, 1) 40%,
+    rgba(0, 59, 96, 1) 60%,
+    rgba(0, 52, 89, 1) 100%
+  );
+  color: #fdfdfd;
   font-family: "Raleway", sans-serif;
 }
 
 a {
   text-decoration: none;
   font-size: 1.3rem;
-  color: #fff;
+  color: #fdfdfd;
+}
+
+.title-mission {
+  font-family: "Oswald", sans-serif;
+  font-size: 3rem;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.4em;
+  letter-spacing: 10px;
+  text-shadow: 1px 1px 3px #000000;
+}
+
+.title-mission::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  width: 100%;
+  background-color: #fdfdfd;
 }
 
 .section-mission {
@@ -23,7 +53,7 @@ a {
 section {
   text-align: center;
   background-color: #003459;
-  margin: 2em auto;
+  margin: 5em auto;
   max-width: 900px;
   padding: 2em 0;
   box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
@@ -41,10 +71,7 @@ li {
 
 .logo {
   width: 70px;
-  height: 70px;
   margin-left: 2em;
-  padding: 0.2em;
-  background-color: #007ea7;
 }
 
 nav {
@@ -82,7 +109,7 @@ nav {
 }
 
 .underline {
-  border-bottom: 2px solid #fff;
+  border-bottom: 2px solid #fdfdfd;
   padding-bottom: 0.3em;
 }
 
@@ -124,14 +151,31 @@ nav {
   }
 }
 
+/* Header */
+header {
+  color: #fdfdfd;
+  margin: 4em 0;
+  height: 80vh;
+  text-align: center;
+}
+
+.content-mission {
+  width: 60%;
+  margin: auto;
+  margin-top: 4em;
+  font-size: 1.5rem;
+  background-color: #003459;
+  color: #fdfdfd;
+  padding: 1em;
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+}
+
 .list-members {
   display: flex;
   justify-content: space-evenly;
   margin: 2em;
 }
-.content-mission {
-  margin: 2em;
-}
+
 .content-contact {
   margin: 2em;
 }

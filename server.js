@@ -75,4 +75,24 @@ app.get("/api/police", (req, res) => {
     });
 });
 
+// Get Fire Stations
+app.get("/api/fire", (req, res) => {
+  const baseURL = "https://data.princegeorgescountymd.gov/resource/bzf2-94qx.json";
+  fetch(baseURL)
+    .then(res => res.json())
+    .then(data => { 
+      const fireStations = data.map(f_station => 
+        ({station_number: f_station.station_co_number, name: f_station.station_name, street_address: f_station.location_1.human_address, 
+          medical_unit_onsite: f_station.medical_unit_onsite, ambulance_onsite: f_station.ambulance_onsite,
+      latitude: f_station.location_1.latitude, longitude: f_station.location_1.longitude})
+      );
+      console.log(fireStations);
+      res.send(fireStations);
+    })
+    .catch(err => {
+      console.log(err);
+      res.redirect("/error");
+    });
+});
+
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
