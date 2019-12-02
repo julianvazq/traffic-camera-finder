@@ -133,11 +133,15 @@ header::before {
   bottom: 0;
   left: 0;
   right: 0;
-  background: linear-gradient(0deg, rgba(0,0,0,1) 10%, rgba(0,0,0,0.6026785714285714) 100%);
+  background: linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 1) 10%,
+    rgba(0, 0, 0, 0.6026785714285714) 100%
+  );
 }
 
 .title {
-  font-family: 'Oswald', sans-serif;
+  font-family: "Oswald", sans-serif;
   /* font-weight: 700; */
   font-size: 3rem;
   position: relative;
@@ -167,6 +171,10 @@ header::before {
 }
 
 @media only screen and (max-width: 702px) {
+  header {
+    padding: 6em 0 28em 0;
+  }
+
   .title::after {
     width: 60%;
     left: 20%;
@@ -321,7 +329,7 @@ button {
 
 .summary-wrapper {
   padding: 6em 0;
-  box-shadow: inset 0px 0px 93px -40px rgba(0,0,0,0.75);
+  box-shadow: inset 0px 0px 93px -40px rgba(0, 0, 0, 0.75);
 }
 
 .section-summary {
@@ -404,7 +412,6 @@ button {
    ========================= */
 
 footer {
-  text-align: center;
   background-color: #00171f;
   border-top: 2px solid #003459;
   border-bottom: 2px solid #003459;
@@ -412,6 +419,34 @@ footer {
 }
 
 footer h2 {
-  margin-bottom: 1em;
+  text-align: center;
+  margin-bottom: 2em;
 }
 
+.contributions-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-items: center;
+  max-width: 600px;
+  margin: auto;
+}
+
+.contributions-container div {
+  position: relative;
+  margin-bottom: 1em;
+  line-height: 1.5;
+}
+
+.contribution {
+  display: inline;
+  margin: 0.3em;
+}
+
+.far {
+  position: relative;
+  font-size: 1.5rem;
+  top: 3px;
+  left: -0.5em;
+  color: #007ea7;
+}

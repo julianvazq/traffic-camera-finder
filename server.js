@@ -83,6 +83,7 @@ app.get("/api/fire", (req, res) => {
     .then(data => { 
       const fireStations = data.map(f_station => 
         ({station_number: f_station.station_co_number, name: f_station.station_name, street_address: f_station.location_1.human_address, 
+          medical_unit_onsite: f_station.medical_unit_onsite, ambulance_onsite: f_station.ambulance_onsite,
       latitude: f_station.location_1.latitude, longitude: f_station.location_1.longitude})
       );
       console.log(fireStations);

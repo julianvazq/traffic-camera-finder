@@ -226,7 +226,14 @@ for (let i = 0; i < arg.length; i += 1) {
     arg[i].station_number +
     "</br>" +
     "<b>Station name</b>: " +
-    arg[i].name);
+    arg[i].name +
+    "</br>" +
+    "<b>Medical unit</b>: " +
+    arg[i].medical_unit_onsite +
+    "</br>"+
+    "<b>Ambulance</b>: " +
+    arg[i].ambulance_onsite
+    );
   umd_mark.addTo(layer1);
 }
 };
@@ -254,17 +261,21 @@ function displaySummary(objArray, clearSummary = true) {
     listItems = 
       objArray.map(cam => `<li style="justify-content:center"><div><span class="bold">${cam.street_address}</span></div></li>`)
   }
-
+  // Display POLICE STATIONS summary
   else if (selectedInput === "police stations") {
     summaryTitle = "POLICE STATIONS";
     listItems = 
       objArray.map(station => `<li style="justify-content:space-evenly"><div><span class="bold">Station name</span>: ${station.name}</div><div><span class="bold">Telephone</span>: ${station.telephone}</div></li>`);
   }
 
+  // Display FIRE STATIONS summary
   else if (selectedInput === "fire stations") {
     summaryTitle = "FIRE STATIONS";
     listItems = 
-      objArray.map(f_station => `<li style="justify-content:space-evenly"><div><span class="bold">Station number</span>: ${f_station.station_number}</div><div><span class="bold">Station name</span>: ${f_station.name}</div></li>`);
+      objArray.map(f_station => 
+        `<li style="justify-content:space-evenly"><div><span class="bold">Station number</span>: ${f_station.station_number ? f_station.station_number : "-" }</div><div><span class="bold">Station name</span>: ${f_station.name}</div>
+        </div><div><span class="bold">Medical Unit</span>: ${f_station.medical_unit_onsite === "Y" ? "Yes" : "No" }</div><div><span class="bold">Ambulance</span>: ${f_station.ambulance_onsite === "Y" ? "Yes" : "No" }</div></li>`
+      );
   }
   
   // Update DOM 
