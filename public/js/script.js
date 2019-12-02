@@ -107,6 +107,21 @@ function loadPoliceStations(e) {
       .then(resPolice => displaySummary(resPolice));
   }
 
+  function loadFireStations(e) {
+    e.preventDefault();
+  
+    fetch("/api/fire")
+      .then(resFire => resFire.json())
+      .then(resFire => {
+        console.log("Fire stations array: ", resFire); // logging step to check what we got
+        return resFire;
+      })
+      .then(resFire => {
+        mapFireData(resFire);
+        return resFire;})
+        .then(resFire => displaySummary(resFire));
+    }
+
 const mapSpeedData = (arg, clearMap = true) => {
     
   if (clearMap) {
@@ -190,6 +205,32 @@ const mapPoliceData = (arg) => {
   }
 };
 
+const mapFireData = (arg) => {
+  layer1.clearLayers();
+
+const fireIcon = L.icon({
+  iconUrl: "../icons/fire-station-icon.svg",
+  iconSize: [30, 70],
+  iconAnchor: [25, 25],
+  popupAnchor: [-10, -3]
+});
+
+/* loop that displays all of the map points as markers */
+for (let i = 0; i < arg.length; i += 1) {
+  umd_mark = L.marker([arg[i].latitude, arg[i].longitude], {
+    icon: fireIcon
+  }).addTo(mymap);
+  umd_mark
+    .bindPopup( "<b>FIRE STATION</b></br>" +
+    "<b>Station number</b>: " +
+    arg[i].station_number +
+    "</br>" +
+    "<b>Station name</b>: " +
+    arg[i].name);
+  umd_mark.addTo(layer1);
+}
+};
+
 function displaySummary(objArray, clearSummary = true) {
 
   const summaryDiv = document.querySelector(".summary");
@@ -219,6 +260,12 @@ function displaySummary(objArray, clearSummary = true) {
     listItems = 
       objArray.map(station => `<li style="justify-content:space-evenly"><div><span class="bold">Station name</span>: ${station.name}</div><div><span class="bold">Telephone</span>: ${station.telephone}</div></li>`);
   }
+
+  else if (selectedInput === "fire stations") {
+    summaryTitle = "FIRE STATIONS";
+    listItems = 
+      objArray.map(f_station => `<li style="justify-content:space-evenly"><div><span class="bold">Station number</span>: ${f_station.station_number}</div><div><span class="bold">Station name</span>: ${f_station.name}</div></li>`);
+  }
   
   // Update DOM 
   summaryDiv.innerHTML += `
@@ -233,8 +280,10 @@ document.querySelector(".btn").addEventListener("click", e => {
     loadSpeedCams(e);
   } else if (selectedInput === "red light") {
     loadRedLightCams(e);
-   } else if (selectedInput === "police stations") {
-      loadPoliceStations(e);
+  } else if (selectedInput === "police stations") {
+    loadPoliceStations(e);
+  } else if (selectedInput === "fire stations") {
+    loadFireStations(e);
   } else {
     loadBoth(e);
   }
