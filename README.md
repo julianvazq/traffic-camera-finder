@@ -29,9 +29,11 @@ These include:
 - HTML
 - Leaflet API
 
+---
+
 ### Installation
 
-##### Dependencies
+#### Dependencies
 
 "Name of the project" requires [Node.js](https://nodejs.org/) to run.
 
@@ -53,9 +55,11 @@ $ npm install -D
 $ npm run dev
 ```
 
+---
+
 ### API Endpoints
 
-#### Speed Cameras
+### Speed Cameras
 
 Returns speed cameras data.
 
@@ -86,7 +90,7 @@ Returns speed cameras data.
 ]
 ```
 
-#### Red Light Cameras
+### Red Light Cameras
 
 Returns red light cameras data.
 
@@ -113,7 +117,7 @@ Returns red light cameras data.
 ]
 ```
 
-#### Police Stations
+### Police Stations
 
 Returns police stations data.
 
@@ -144,7 +148,7 @@ Returns police stations data.
 ]
 ```
 
-#### Fire Stations
+### Fire Stations
 
 Returns fire stations data.
 
@@ -178,6 +182,8 @@ Returns fire stations data.
   }, ...
 ]
 ```
+
+---
 
 ### Todos
 
