@@ -46,8 +46,8 @@ a {
   background-color: #fdfdfd;
 }
 
-.section-mission {
-  margin-top: 6em;
+.content-mission {
+  font-size: 1.5rem;
 }
 
 section {
@@ -155,19 +155,7 @@ nav {
 header {
   color: #fdfdfd;
   margin: 4em 0;
-  height: 80vh;
   text-align: center;
-}
-
-.content-mission {
-  width: 60%;
-  margin: auto;
-  margin-top: 4em;
-  font-size: 1.5rem;
-  background-color: #003459;
-  color: #fdfdfd;
-  padding: 1em;
-  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
 }
 
 .list-members {
