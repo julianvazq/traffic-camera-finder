@@ -2,7 +2,7 @@
 
 > "Name of the project"'s main objective is to give PG County residents quick access to information about different resources managed by the government, such as traffic cameras, fire and fire stations.'
 
-**Link to Heroku**: ...
+**Link to Heroku**: https://pg-finder.herokuapp.com/
 
 ## Target Browsers
 
@@ -17,7 +17,7 @@ These include:
 - Safari
 - Opera
 
-**Caveat**: even though Edge support Flexbox, it does not support the property "justify-content", causing the layout to not look as intended.
+**Caveat**: even though Edge supports Flexbox, it does not support the property "justify-content", causing the layout to not look as intended.
 
 ## Developer Manual
 
@@ -45,7 +45,7 @@ $ npm start
 
 #### Dev Dependencies
 
-The only dev dependency is NodeMon. This automatically restarts the node application when a file change is detected, effectively eliminating the task of having to manually restart the server.
+The only dev dependency is NodeMon. NodeMon automatically restarts the node application when a file change is detected, effectively eliminating the task of having to manually restart the server. Start the server by running "npm run dev" instead of "npm start" to make use of this tool.
 
 ```sh
 $ cd name of the project
@@ -56,6 +56,8 @@ $ npm run dev
 ### API Endpoints
 
 #### Speed Cameras
+
+Returns speed cameras data.
 
 | TYPE     | VALUE            |
 | -------- | ---------------- |
@@ -86,6 +88,8 @@ $ npm run dev
 
 #### Red Light Cameras
 
+Returns red light cameras data.
+
 | TYPE     | VALUE            |
 | -------- | ---------------- |
 | Endpoint | GET              |
@@ -110,6 +114,8 @@ $ npm run dev
 ```
 
 #### Police Stations
+
+Returns police stations data.
 
 | TYPE     | VALUE            |
 | -------- | ---------------- |
@@ -139,6 +145,8 @@ $ npm run dev
 ```
 
 #### Fire Stations
+
+Returns fire stations data.
 
 | TYPE     | VALUE            |
 | -------- | ---------------- |
@@ -170,3 +178,10 @@ $ npm run dev
   }, ...
 ]
 ```
+
+### Todos
+
+- Add hospitals
+- Add farmers markets
+- Make summary list items clickable and make them redirect to their respective icon on the map.
+- Write Tests
