@@ -5,7 +5,7 @@ let mymap = L.map("map").setView([38.7965, -76.8836], 10);
 
 const testudo = L.icon({
   iconUrl: "../icons/testudo.png",
-  iconSize: [50, 50],
+  iconSize: [50, 55],
   iconAnchor: [25, 25],
   popupAnchor: [0, -25]
 });
@@ -41,7 +41,8 @@ function loadSpeedCams(e) {
     .then(res => {
       mapSpeedData(res);
       return res;
-    }).then(res => displaySummary(res));
+    })
+    .then(res => displaySummary(res));
 }
 
 function loadRedLightCams(e) {
@@ -54,7 +55,8 @@ function loadRedLightCams(e) {
     })
     .then(res => {
       mapRedLightData(res);
-      return res;})
+      return res;
+    })
     .then(res => displaySummary(res));
 }
 
@@ -76,7 +78,8 @@ function loadBoth(e) {
     .then(resSpeed => {
       mapSpeedData(resSpeed, false);
       selectedInput = "speed";
-      return resSpeed;})
+      return resSpeed;
+    })
     .then(resSpeed => displaySummary(resSpeed, false));
 
   fetch("/api/redlight")
@@ -88,7 +91,8 @@ function loadBoth(e) {
     .then(resRedLight => {
       mapRedLightData(resRedLight, false);
       selectedInput = "red light";
-      return resRedLight;})
+      return resRedLight;
+    })
     .then(resRedLight => displaySummary(resRedLight, false));
 }
 
@@ -103,30 +107,31 @@ function loadPoliceStations(e) {
     })
     .then(resPolice => {
       mapPoliceData(resPolice);
-      return resPolice;})
-      .then(resPolice => displaySummary(resPolice));
-  }
+      return resPolice;
+    })
+    .then(resPolice => displaySummary(resPolice));
+}
 
-  function loadFireStations(e) {
-    e.preventDefault();
-  
-    fetch("/api/fire")
-      .then(resFire => resFire.json())
-      .then(resFire => {
-        console.log("Fire stations array: ", resFire); // logging step to check what we got
-        return resFire;
-      })
-      .then(resFire => {
-        mapFireData(resFire);
-        return resFire;})
-        .then(resFire => displaySummary(resFire));
-    }
+function loadFireStations(e) {
+  e.preventDefault();
+
+  fetch("/api/fire")
+    .then(resFire => resFire.json())
+    .then(resFire => {
+      console.log("Fire stations array: ", resFire); // logging step to check what we got
+      return resFire;
+    })
+    .then(resFire => {
+      mapFireData(resFire);
+      return resFire;
+    })
+    .then(resFire => displaySummary(resFire));
+}
 
 const mapSpeedData = (arg, clearMap = true) => {
-    
   if (clearMap) {
     layer1.clearLayers();
-    }
+  }
 
   const speedCamIcon = L.icon({
     iconUrl: "../icons/speed-camera-icon.svg",
@@ -140,25 +145,23 @@ const mapSpeedData = (arg, clearMap = true) => {
     umd_mark = L.marker([arg[i].latitude, arg[i].longitude], {
       icon: speedCamIcon
     }).addTo(mymap);
-    umd_mark
-      .bindPopup(
-        "<b>SPEED CAMERA</b></br>" +
-          arg[i].street_address +
-          "</br>" +
-          "<b>Posted speed</b>: " +
-          arg[i].posted_speed +
-          "</br>" +
-          "<b>Enforced speed</b>: " +
-          arg[i].enforcement
-      );
+    umd_mark.bindPopup(
+      "<b>SPEED CAMERA</b></br>" +
+        arg[i].street_address +
+        "</br>" +
+        "<b>Posted speed</b>: " +
+        arg[i].posted_speed +
+        "</br>" +
+        "<b>Enforced speed</b>: " +
+        arg[i].enforcement
+    );
     umd_mark.addTo(layer1);
   }
 };
 
 const mapRedLightData = (arg, clearMap = true) => {
-  
   if (clearMap) {
-  layer1.clearLayers();
+    layer1.clearLayers();
   }
 
   const redLightCamIcon = L.icon({
@@ -173,14 +176,13 @@ const mapRedLightData = (arg, clearMap = true) => {
     umd_mark = L.marker([arg[i].latitude, arg[i].longitude], {
       icon: redLightCamIcon
     }).addTo(mymap);
-    umd_mark
-      .bindPopup("<b>RED LIGHT CAMERA</b></br>" + arg[i].street_address);
+    umd_mark.bindPopup("<b>RED LIGHT CAMERA</b></br>" + arg[i].street_address);
     umd_mark.addTo(layer1);
   }
 };
 
-const mapPoliceData = (arg) => {
-    layer1.clearLayers();
+const mapPoliceData = arg => {
+  layer1.clearLayers();
 
   const policeIcon = L.icon({
     iconUrl: "../icons/police-station-icon.svg",
@@ -194,56 +196,56 @@ const mapPoliceData = (arg) => {
     umd_mark = L.marker([arg[i].latitude, arg[i].longitude], {
       icon: policeIcon
     }).addTo(mymap);
-    umd_mark
-      .bindPopup( "<b>POLICE STATION</b></br>" +
-      "<b>Station name</b>: " +
-      arg[i].name +
-      "</br>" +
-      "<b>Telephone:</b>: " +
-      arg[i].telephone);
+    umd_mark.bindPopup(
+      "<b>POLICE STATION</b></br>" +
+        "<b>Station name</b>: " +
+        arg[i].name +
+        "</br>" +
+        "<b>Telephone:</b>: " +
+        arg[i].telephone
+    );
     umd_mark.addTo(layer1);
   }
 };
 
-const mapFireData = (arg) => {
+const mapFireData = arg => {
   layer1.clearLayers();
 
-const fireIcon = L.icon({
-  iconUrl: "../icons/fire-station-icon.svg",
-  iconSize: [30, 70],
-  iconAnchor: [25, 25],
-  popupAnchor: [-10, -3]
-});
+  const fireIcon = L.icon({
+    iconUrl: "../icons/fire-station-icon.svg",
+    iconSize: [30, 70],
+    iconAnchor: [25, 25],
+    popupAnchor: [-10, -3]
+  });
 
-/* loop that displays all of the map points as markers */
-for (let i = 0; i < arg.length; i += 1) {
-  umd_mark = L.marker([arg[i].latitude, arg[i].longitude], {
-    icon: fireIcon
-  }).addTo(mymap);
-  umd_mark
-    .bindPopup( "<b>FIRE STATION</b></br>" +
-    "<b>Station number</b>: " +
-    arg[i].station_number +
-    "</br>" +
-    "<b>Station name</b>: " +
-    arg[i].name +
-    "</br>" +
-    "<b>Medical unit</b>: " +
-    arg[i].medical_unit_onsite +
-    "</br>"+
-    "<b>Ambulance</b>: " +
-    arg[i].ambulance_onsite
+  /* loop that displays all of the map points as markers */
+  for (let i = 0; i < arg.length; i += 1) {
+    umd_mark = L.marker([arg[i].latitude, arg[i].longitude], {
+      icon: fireIcon
+    }).addTo(mymap);
+    umd_mark.bindPopup(
+      "<b>FIRE STATION</b></br>" +
+        "<b>Station number</b>: " +
+        arg[i].station_number +
+        "</br>" +
+        "<b>Station name</b>: " +
+        arg[i].name +
+        "</br>" +
+        "<b>Medical unit</b>: " +
+        arg[i].medical_unit_onsite +
+        "</br>" +
+        "<b>Ambulance</b>: " +
+        arg[i].ambulance_onsite
     );
-  umd_mark.addTo(layer1);
-}
+    umd_mark.addTo(layer1);
+  }
 };
 
 function displaySummary(objArray, clearSummary = true) {
-
   const summaryDiv = document.querySelector(".summary");
 
   if (clearSummary) {
-  summaryDiv.innerHTML = "";
+    summaryDiv.innerHTML = "";
   }
 
   let summaryTitle = "";
@@ -252,33 +254,47 @@ function displaySummary(objArray, clearSummary = true) {
   // Display SPEED CAMERA summary
   if (selectedInput === "speed") {
     summaryTitle = "SPEED CAMERAS";
-    listItems = 
-      objArray.map(cam => `<li><div><span class="bold">${cam.street_address}</span class="bold"></div><div><span class="bold">Posted speed</span>: ${cam.posted_speed}</div><div><span class="bold">Enforced speed</span>: ${cam.enforcement}</div></li>`)
+    listItems = objArray.map(
+      cam =>
+        `<li><div><span class="bold">${cam.street_address}</span class="bold"></div><div><span class="bold">Posted speed</span>: ${cam.posted_speed}</div><div><span class="bold">Enforced speed</span>: ${cam.enforcement}</div></li>`
+    );
   }
   // Display RED LIGHT CAMERA summary
   else if (selectedInput === "red light") {
     summaryTitle = "RED LIGHT CAMERAS";
-    listItems = 
-      objArray.map(cam => `<li style="justify-content:center"><div><span class="bold">${cam.street_address}</span></div></li>`)
+    listItems = objArray.map(
+      cam =>
+        `<li style="justify-content:center"><div><span class="bold">${cam.street_address}</span></div></li>`
+    );
   }
   // Display POLICE STATIONS summary
   else if (selectedInput === "police stations") {
     summaryTitle = "POLICE STATIONS";
-    listItems = 
-      objArray.map(station => `<li style="justify-content:space-evenly"><div><span class="bold">Station name</span>: ${station.name}</div><div><span class="bold">Telephone</span>: ${station.telephone}</div></li>`);
+    listItems = objArray.map(
+      station =>
+        `<li style="justify-content:space-evenly"><div><span class="bold">Station name</span>: ${station.name}</div><div><span class="bold">Telephone</span>: ${station.telephone}</div></li>`
+    );
   }
 
   // Display FIRE STATIONS summary
   else if (selectedInput === "fire stations") {
     summaryTitle = "FIRE STATIONS";
-    listItems = 
-      objArray.map(f_station => 
-        `<li style="justify-content:space-evenly"><div><span class="bold">Station number</span>: ${f_station.station_number ? f_station.station_number : "-" }</div><div><span class="bold">Station name</span>: ${f_station.name}</div>
-        </div><div><span class="bold">Medical Unit</span>: ${f_station.medical_unit_onsite === "Y" ? "Yes" : "No" }</div><div><span class="bold">Ambulance</span>: ${f_station.ambulance_onsite === "Y" ? "Yes" : "No" }</div></li>`
-      );
+    listItems = objArray.map(
+      f_station =>
+        `<li style="justify-content:space-evenly"><div><span class="bold">Station number</span>: ${
+          f_station.station_number ? f_station.station_number : "-"
+        }</div><div><span class="bold">Station name</span>: ${
+          f_station.name
+        }</div>
+        </div><div><span class="bold">Medical Unit</span>: ${
+          f_station.medical_unit_onsite === "Y" ? "Yes" : "No"
+        }</div><div><span class="bold">Ambulance</span>: ${
+          f_station.ambulance_onsite === "Y" ? "Yes" : "No"
+        }</div></li>`
+    );
   }
-  
-  // Update DOM 
+
+  // Update DOM
   summaryDiv.innerHTML += `
   <h2 class="list-title">${summaryTitle}</h2>
   <ul class="summary-list">${listItems.join("")}</ul>`;

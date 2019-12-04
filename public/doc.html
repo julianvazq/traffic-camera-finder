@@ -28,34 +28,187 @@
     </nav>
     <!-- Header -->
     <header>
-      <h1 class="title">DOCUMENTATION</h1>
+      <div class="header-content">
+        <h1 class="title">DOCUMENTATION</h1>
+      </div>
     </header>
     <!-- Description -->
-    <section class="section-mission">
-      <h1 class="title-mission">Traffic Camera Finder</h1>
-      <div class="content-mission">
-        This page is documentation on how to use our application...
+    <section class="section-wrapper">
+      <div class="documentation">
+        <h2>Specifications</h2>
+        <section class="target-browsers">
+          <h3>Target Browsers</h3>
+          <ul class="browser-list">
+            <li>Google Chrome</li>
+            <li>Microsoft Edge</li>
+            <li>Firefox</li>
+            <li>Safari</li>
+            <li>Opera</li>
+          </ul>
+          <p>
+            <span class="bold">Caveat</span>: even though Edge supports Flexbox,
+            it does not support the property "justify-content", causing the
+            layout to not look as intended.
+          </p>
+        </section>
+        <hr />
+        <section class="tech">
+          <h3>Tech</h3>
+          <ul class="tech-list">
+            <li>Node.js</li>
+            <li>JavaScript ( + Leaflet API )</li>
+            <li>CSS</li>
+            <li>HTML</li>
+          </ul>
+        </section>
+        <hr />
+        <h2>Installation</h2>
+        <section class="dependencies">
+          <h3>Dependencies</h3>
+          <p>
+            PG Finder requires <a href="https://nodejs.org/">Node.js</a> to run.
+          </p>
+          <p>Install the dependencies and start the server.</p>
+          <code>
+            $ cd pg-finder<br />
+            $ npm install<br />$ npm start
+          </code>
+          <hr />
+          <h3>Dev Dependencies</h3>
+          <p>
+            The only dev dependency is
+            <a href="https://nodemon.io/">NodeMon</a>. NodeMon automatically
+            restarts the node application when a file change is detected,
+            effectively eliminating the task of having to manually restart the
+            server. Start the server by running "npm run dev" instead of "npm
+            start" to make use of this tool.
+          </p>
+          <code>
+            $ cd pg-finder<br />
+            $ npm install -D || npm install -g nodemon
+            <br />$ npm run dev
+          </code>
+          <hr />
+        </section>
+        <section class="api">
+          <h2>API Endpoints</h2>
+          <h3>Speed Cameras</h3>
+          <p><span class="bold">TYPE</span> : <span>GET</span></p>
+          <p><span class="bold">URL</span> : <span>/api/speed</span></p>
+          <p>
+            <span class="bold">RESPONSE</span> : <span>Array of objects</span>
+          </p>
+          <p></p>
+
+          <h4>Example Response</h4>
+          <pre>
+          <code>[
+            {
+              street_address: '13000 Laurel Bowie Road',
+              posted_speed: '40',
+              enforcement: '52',
+              latitude: '39.104911',
+              longitude: '-76.866641'
+            },
+            {
+              street_address: '6360 Oxon Hill Road, Oxon Hill',
+              posted_speed: '30',
+              enforcement: '42',
+              latitude: '38.80328',
+              longitude: '-76.99046'
+            }, ...
+          ]</code>
+          </pre>
+          <hr />
+
+          <h3>Red Light Cameras</h3>
+          <p><span class="bold">TYPE</span> : <span>GET</span></p>
+          <p><span class="bold">URL</span> : <span>/api/redlight</span></p>
+          <p>
+            <span class="bold">RESPONSE</span> : <span>Array of objects</span>
+          </p>
+          <p></p>
+
+          <h4>Example Response</h4>
+          <pre>
+          <code>[
+            {
+              street_address: 'Route 301 NB @ Pointer Ridge Drive',
+              latitude: '38.909169',
+              longitude: '-76.718058'
+            },
+            {
+              street_address: 'Route 5/301 NB @ Cedarville Road',
+              latitude: '38.665376',
+              longitude: '-76.875035'
+            }, ...
+          ]</code>
+          </pre>
+          <hr />
+
+          <h3>Police Stations</h3>
+          <p><span class="bold">TYPE</span> : <span>GET</span></p>
+          <p><span class="bold">URL</span> : <span>/api/police</span></p>
+          <p>
+            <span class="bold">RESPONSE</span> : <span>Array of objects</span>
+          </p>
+          <p></p>
+
+          <h4>Example Response</h4>
+          <pre>
+          <code>[
+            {
+              name: 'Communications',
+              telephone: '301-499-8200',
+              street_address: '{"address": "17321 Melford Blvd", "city": "Bowie", "state": "MD", "zip": ""}',
+              latitude: '38.9581104',
+              longitude: '-76.70426828'
+            },
+            {
+              name: 'Clinton',
+              telephone: '301-856-3130',
+              street_address: '{"address": "6707 Groveton Dr", "city": "Clinton", "state": "MD", "zip": ""}',
+              latitude: '38.73200663',
+              longitude: '-76.89252333'
+            }, ...
+          ]</code>
+          </pre>
+          <hr />
+
+          <h3>Fire Stations</h3>
+          <p><span class="bold">TYPE</span> : <span>GET</span></p>
+          <p><span class="bold">URL</span> : <span>/api/fire</span></p>
+          <p>
+            <span class="bold">RESPONSE</span> : <span>Array of objects</span>
+          </p>
+          <p></p>
+
+          <h4>Example Response</h4>
+          <pre>
+          <code>[
+            {
+              station_number: '801',
+              name: 'HYATTSVILLE',
+              street_address: '{"address": "6200 BELCREST RD", "city": "Hyattsville", "state": "MD", "zip": ""}',
+              medical_unit_onsite: 'Y',
+              ambulance_onsite: 'Y',
+              latitude: '38.96384532',
+              longitude: '-76.95262225'
+            },
+            {
+              station_number: '805',
+              name: 'CAPITOL HEIGHTS',
+              street_address: '{"address": "6061 CENTRAL AVE", "city": "Gwynn Oak", "state": "MD", "zip": ""}',
+              medical_unit_onsite: 'Y',
+              ambulance_onsite: 'N',
+              latitude: '38.88438585',
+              longitude: '-76.91193696'
+            }, ...
+          ]</code>
+          </pre>
+        </section>
       </div>
-      <a href="https://github.com/julianvazq/traffic-camera-finder"
-        >Link to our Github</a
-      >
     </section>
-    <!-- Getting Started -->
-    <section>
-      <h1 class="title-summary">Getting Started</h1>
-      <ol class="list-started">
-        <li>Prompt a Camera</li>
-        <li>Get camera</li>
-        <li>Bleh</li>
-      </ol>
-    </section>
-    <!-- Troubleshooting -->
-    <section class="section-members">
-      <h1 class="title-mission">Troubleshooting</h1>
-      <div class="content-mission">
-        Text for troubleshotting goes here
-      </div>
-    </section>
-    <footer><p>Something</p></footer>
+    <footer class="bold">2019 PG FINDER</footer>
   </body>
 </html>

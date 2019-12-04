@@ -12,7 +12,7 @@
     "type": "git",
     "url": "git+https://github.com/julianvazq/traffic-camera-finder.git"
   },
-  "author": "Julian Vazquez, Jake Susskind, Richard Teng, Romano and Josh Yang",
+  "author": "Julian Vazquez, Jake Susskind, Richard Teng, and Romano",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/julianvazq/traffic-camera-finder/issues"
