@@ -1,6 +1,6 @@
 # PG FINDER
 
-> PG Finder's main objective is to give PG County residents quick access to information about different resources managed by the government, such as traffic cameras, fire and police stations.'
+> PG Finder's main objective is to give PG County residents quick access to information about different resources managed by the government, such as traffic cameras, fire and police stations.
 
 **Link to Heroku**: https://pg-finder.herokuapp.com/
 
@@ -35,7 +35,7 @@ These include:
 
 #### Dependencies
 
-"Name of the project" requires [Node.js](https://nodejs.org/) to run.
+PG Finder requires [Node.js](https://nodejs.org/) to run.
 
 Install the dependencies and start the server.
 
