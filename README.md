@@ -1,6 +1,6 @@
 # PG FINDER
 
-> PG Finder's main objective is to give PG County residents quick access to information about different resources managed by the government, such as traffic cameras, fire and fire stations.'
+> PG Finder's main objective is to give PG County residents quick access to information about different resources managed by the government, such as traffic cameras, fire and police stations.'
 
 **Link to Heroku**: https://pg-finder.herokuapp.com/
 
