@@ -153,15 +153,19 @@ header {
   border-radius: 10px;
 }
 
+.documentation {
+  padding: 2em 4em;
+  text-align: left;
+}
+
 @media only screen and (max-width: 600px) {
   .section-wrapper {
     margin: 1em;
   }
-}
 
-.documentation {
-  padding: 2em 4em;
-  text-align: left;
+  .documentation {
+    padding: 1em 2em;
+  }
 }
 
 .documentation a {
