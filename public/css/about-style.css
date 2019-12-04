@@ -46,27 +46,11 @@ a {
   background-color: #fdfdfd;
 }
 
-.content-mission {
-  font-size: 1.5rem;
-}
-
-section {
-  text-align: center;
-  background-color: #003459;
-  margin: 5em auto;
-  max-width: 900px;
-  padding: 2em 0;
-  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
-}
-
-@media only screen and (max-width: 900px) {
-  section {
-    margin: 2em 1em;
+@media only screen and (max-width: 410px) {
+  .title-mission::after {
+    width: 80%;
+    left: 10%;
   }
-}
-
-li {
-  list-style-type: none;
 }
 
 .logo {
@@ -154,29 +138,77 @@ nav {
 /* Header */
 header {
   text-align: center;
-  padding: 6em 0 0 0;
-  position: relative;
-  z-index: -2;
+  padding: 6em 0 4em 0;
+  background-color: #003459;
 }
 
-header::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+/* Sections */
+section {
+  text-align: center;
+  background-color: #003459;
+  padding: 2em 0;
 }
 
+.mission-content,
+.members-content {
+  max-width: 900px;
+  margin: auto;
+}
 
-.list-members {
+/* Misison Section */
+.section-mission {
+  font-size: 1.5rem;
+  line-height: 1.5;
+  background-color: #003459;
+  padding-bottom: 6em;
+}
+
+.mission-content {
+  margin: auto;
+  padding: 1em;
+  border-radius: 10px;
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+}
+
+/* Members */
+.section-members {
+  background-color: #fdfdfd;
+  color: #003459;
+  padding: 3em;
+}
+
+.title-members {
+  margin-bottom: 2em;
+}
+
+.members-content {
   display: flex;
   justify-content: space-evenly;
-  margin: 2em;
+  flex-wrap: wrap;
 }
 
-.content-contact {
-  margin: 2em;
+.member-item {
+  width: 33%;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  margin: 1.5em 2em;
+  padding: 1.5em;
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+}
+
+.member-item hr {
+  margin: 0.5em 0;
+}
+
+@media only screen and (max-width: 800px) {
+  .member-item {
+    width: 100%;
+  }
+}
+
+.bold {
+  font-weight: 600;
 }
 
 footer {
@@ -185,5 +217,4 @@ footer {
   border-top: 2px solid #003459;
   border-bottom: 2px solid #003459;
   padding: 2em;
-  margin-top: 7em;
 }

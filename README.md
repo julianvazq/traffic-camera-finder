@@ -1,6 +1,6 @@
-# Name of the project
+# PG FINDER
 
-> "Name of the project"'s main objective is to give PG County residents quick access to information about different resources managed by the government, such as traffic cameras, fire and fire stations.'
+> PG Finder's main objective is to give PG County residents quick access to information about different resources managed by the government, such as traffic cameras, fire and fire stations.'
 
 **Link to Heroku**: https://pg-finder.herokuapp.com/
 
@@ -40,7 +40,7 @@ These include:
 Install the dependencies and start the server.
 
 ```sh
-$ cd name of the project
+$ cd pg-finder
 $ npm install
 $ npm start
 ```
@@ -50,7 +50,7 @@ $ npm start
 The only dev dependency is NodeMon. NodeMon automatically restarts the node application when a file change is detected, effectively eliminating the task of having to manually restart the server. Start the server by running "npm run dev" instead of "npm start" to make use of this tool.
 
 ```sh
-$ cd name of the project
+$ cd pg-finder
 $ npm install -D
 $ npm run dev
 ```
