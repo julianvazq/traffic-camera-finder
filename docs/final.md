@@ -39,4 +39,4 @@ In the end, we think our system provides a solid solution to the information pro
 - Add hospitals
 - Add farmers markets
 - Make summary list items clickable and make them redirect to their respective icon on the map
-- Write Tests
+- Write tests
