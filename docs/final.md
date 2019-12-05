@@ -32,7 +32,7 @@ In the end, we think our system provides a solid solution to the information pro
 **Challenges faced and impact on final design**
 
 - Port problem during the Heroku deploymente process. Changing the port constant to process.env.PORT fixed it (thanks Professor Leitch).
-- We had some CSS issues along the way, but that is to be expected when developing a website and we were able to fix them after some time spent on debugging.
+- We had some CSS issues (mostly when making it responsive) along the way, but that is to be expected when developing a website and we were able to fix them after some time spent on debugging.
 
 **Possible future work**
 
