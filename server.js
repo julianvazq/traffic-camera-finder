@@ -7,24 +7,9 @@ const port = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-/*
- * The 'express.static' middleware provides some services Express can use to
- * serve files from a directory - in this case, the 'public' subdirectory of
- * this project.
- *
- * The 'public' directory for this project, in turn, contains all the HTML,
- * Javascript, and CSS files needed to run a simple chat client connected to
- * this server. Accessing this server's root URL will serve 'public/index.html',
- * which contains our chat client. This gives users an easy way to connect to
- * the server and interact with other users.
- */
-
 app.use(express.static("public"));
 
-// Speed Cameras API endpoint: https://data.princegeorgescountymd.gov/resource/mnkf-cu5c.json
-// Red Light Cameras API endpoint: https://data.princegeorgescountymd.gov/resource/3a3p-zwvz.json
-
-// POST Speed Camera data
+// POST Request
 app.use(express.json({ limit: "1mb" }));
 app.post("/api/speed_post", (req, res) => {
   console.log("*POST RECEIVED*");
@@ -38,7 +23,7 @@ app.post("/api/speed_post", (req, res) => {
   });
 });
 
-//Get Speed Cameras data
+// GET Speed Cameras data
 app.get("/api/speed", (req, res) => {
   const baseURL =
     "https://data.princegeorgescountymd.gov/resource/mnkf-cu5c.json";
@@ -61,7 +46,7 @@ app.get("/api/speed", (req, res) => {
     });
 });
 
-//Get Red Light Cameras data
+// GET Red Light Cameras data
 app.get("/api/redlight", (req, res) => {
   const baseURL =
     "https://data.princegeorgescountymd.gov/resource/3a3p-zwvz.json";
@@ -82,7 +67,7 @@ app.get("/api/redlight", (req, res) => {
     });
 });
 
-// Get Police Stations
+// GET Police Stations
 app.get("/api/police", (req, res) => {
   const baseURL =
     "https://data.princegeorgescountymd.gov/resource/qkn8-5mhu.json";
@@ -105,7 +90,7 @@ app.get("/api/police", (req, res) => {
     });
 });
 
-// Get Fire Stations
+// GET Fire Stations
 app.get("/api/fire", (req, res) => {
   const baseURL =
     "https://data.princegeorgescountymd.gov/resource/bzf2-94qx.json";

@@ -185,6 +185,8 @@ section {
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
+  padding: 1em;
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
 }
 
 .member-item {
@@ -194,7 +196,8 @@ section {
   flex-direction: column;
   margin: 1.5em 2em;
   padding: 1.5em;
-  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+  border: 0.5px solid #003459;
+  /* box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22); */
 }
 
 .member-item hr {
@@ -204,6 +207,16 @@ section {
 @media only screen and (max-width: 800px) {
   .member-item {
     width: 100%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .section-members {
+    padding: 2em 0 0 0;
+  }
+
+  .members-content {
+    padding: 0;
   }
 }
 

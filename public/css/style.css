@@ -169,6 +169,7 @@ header::before {
 @media only screen and (max-width: 702px) {
   header {
     padding: 6em 0 28em 0;
+    background-position: 83%;
   }
 
   .title::after {
@@ -323,15 +324,39 @@ button {
 /* ======= Add new icon section==== 
 ===================================*/
 
-.add-icon-wrapper {
-  margin: 1.5em;
-  flex-direction: column;
-  justify-content: space-evenly;
-  justify-items: center;
+.section-add-icon {
+  margin: auto;
+  margin-bottom: 3em;
+  padding: 2em 0 0 0;
+  box-shadow: 12px 0 10px -6px #000;
 }
 
 .add-icon-wrapper > * {
   margin: 0.5em;
+}
+
+.add-icon-label {
+  position: relative;
+  padding-bottom: 1.2em;
+}
+
+.add-icon-label::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  bottom: 0;
+  left: 10%;
+  height: 3px;
+  width: 80%;
+  background-color: #fdfdfd;
+}
+
+.add-icon-inner-form {
+  margin: 1.5em;
+  flex-direction: column;
+  justify-content: space-evenly;
+  justify-items: center;
+  height: 200px;
 }
 
 .latitude,
@@ -343,7 +368,6 @@ button {
 .latitude input,
 .longitude input {
   padding-left: 0.5em;
-  /* height: 30px; */
   font-size: 1rem;
 }
 
@@ -358,7 +382,7 @@ button {
 .add {
   margin-top: 1em;
   align-self: center;
-  width: 40%;
+  width: 42%;
 }
 
 @media only screen and (max-width: 700px) {
@@ -386,7 +410,7 @@ button {
    ========================= */
 
 .summary-wrapper {
-  padding: 6em 0;
+  padding: 3em 0;
   box-shadow: inset 0px 0px 93px -40px rgba(0, 0, 0, 0.75);
 }
 
