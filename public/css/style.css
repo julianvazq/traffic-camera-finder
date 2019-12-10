@@ -320,6 +320,68 @@ button {
   }
 }
 
+/* ======= Add new icon section==== 
+===================================*/
+
+.add-icon-wrapper {
+  margin: 1.5em;
+  flex-direction: column;
+  justify-content: space-evenly;
+  justify-items: center;
+}
+
+.add-icon-wrapper > * {
+  margin: 0.5em;
+}
+
+.latitude,
+.longitude {
+  display: flex;
+  justify-content: center;
+}
+
+.latitude input,
+.longitude input {
+  padding-left: 0.5em;
+  /* height: 30px; */
+  font-size: 1rem;
+}
+
+.latitude input {
+  margin-left: 5em;
+}
+
+.longitude input {
+  margin-left: 3em;
+}
+
+.add {
+  margin-top: 1em;
+  align-self: center;
+  width: 40%;
+}
+
+@media only screen and (max-width: 700px) {
+  .latitude,
+  .longitude {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .latitude input,
+  .longitude input {
+    font-size: 0.8rem;
+  }
+
+  .latitude input {
+    margin-left: 3em;
+  }
+
+  .longitude input {
+    margin-left: 1em;
+  }
+}
+
 /* ======= Summary Section ========
    ========================= */
 

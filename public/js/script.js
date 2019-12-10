@@ -128,7 +128,55 @@ function loadFireStations(e) {
     .then(resFire => displaySummary(resFire));
 }
 
-const mapSpeedData = (arg, clearMap = true) => {
+const addNewIcon = async () => {
+  const latitude = document.querySelector('input[name="latitude"]').value;
+  const longitude = document.querySelector('input[name="longitude"]').value;
+  const iconType = selectedInput;
+
+  // console.log(iconType, latitude, longitude);
+
+  const data = { iconType, latitude, longitude };
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-type": "application/json"
+    },
+    body: JSON.stringify(data)
+  };
+  const response = await fetch("/api/speed_post", options);
+  const json = await response.json();
+  console.log(json);
+
+  let iconURL = "../icons/";
+  if (selectedInput === "red light") {
+    iconURL += "red-light-camera-icon.svg";
+  } else if (selectedInput === "speed and red light") {
+    /*
+  Will do in the future
+   */
+  } else if (selectedInput === "police stations") {
+    iconURL += "police-station-icon.svg";
+  } else if (selectedInput === "fire stations") {
+    iconURL += "fire-station-icon.svg";
+  } else {
+    iconURL += "speed-camera-icon.svg";
+  }
+
+  const speedCamIcon = L.icon({
+    iconUrl: iconURL,
+    iconSize: [30, 70],
+    iconAnchor: [25, 25],
+    popupAnchor: [-10, -3]
+  });
+
+  newMarker = L.marker([latitude, longitude], {
+    icon: speedCamIcon
+  }).addTo(mymap);
+  newMarker.bindPopup(`<b>${selectedInput.toUpperCase()}</b></br>`);
+  newMarker.addTo(layer1);
+};
+
+const mapSpeedData = async (arg, clearMap = true) => {
   if (clearMap) {
     layer1.clearLayers();
   }
@@ -317,4 +365,22 @@ document.querySelector(".btn").addEventListener("click", e => {
 });
 document.querySelector(".input-field").addEventListener("change", e => {
   selectedInput = e.target.value;
+
+  document.querySelector(".add").disabled = false;
+  document.querySelector('input[name="latitude"]').disabled = false;
+  document.querySelector('input[name="longitude"]').disabled = false;
+  /* Disabled adding speed/red light cameras when they're both selected (for now)
+  /* because it's a more complex case than the others 
+  /******************************************************************************/
+  if (selectedInput === "speed and red light") {
+    document.querySelector(".add").disabled = true;
+    document.querySelector('input[name="latitude"]').disabled = true;
+    document.querySelector('input[name="longitude"]').disabled = true;
+  }
+  /******************************************************************************/
+});
+
+document.querySelector(".add").addEventListener("click", e => {
+  e.preventDefault();
+  addNewIcon();
 });
