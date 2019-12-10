@@ -1,6 +1,6 @@
 # User Manual
 
-## How to use Name of the project
+## How to use PG Finder
 
 - When you first open the web application you will see a drop-down menu with a map under it.
 - From the drop-down menu, you can choose which government resource you want and then click "Go".

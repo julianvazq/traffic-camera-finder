@@ -24,6 +24,20 @@ app.use(express.static("public"));
 // Speed Cameras API endpoint: https://data.princegeorgescountymd.gov/resource/mnkf-cu5c.json
 // Red Light Cameras API endpoint: https://data.princegeorgescountymd.gov/resource/3a3p-zwvz.json
 
+// POST Speed Camera data
+app.use(express.json({ limit: "1mb" }));
+app.post("/api/speed_post", (req, res) => {
+  console.log("*POST RECEIVED*");
+  console.log(req.body);
+  const data = req.body;
+  res.json({
+    status: "success",
+    iconType: data.iconType,
+    latitude: data.latitude,
+    longitude: data.longitude
+  });
+});
+
 //Get Speed Cameras data
 app.get("/api/speed", (req, res) => {
   const baseURL =
