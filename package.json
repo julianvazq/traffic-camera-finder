@@ -1,7 +1,7 @@
 {
-  "name": "traffic-camera-finder",
+  "name": "pg-finder",
   "version": "1.0.0",
-  "description": "PG County Traffic Camera Finder - University of Maryland, INST377 Project",
+  "description": "PG County Finder - University of Maryland, INST377 Project",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/julianvazq/traffic-camera-finder.git"
+    "url": "git+https://github.com/julianvazq/pg-finder.git"
   },
   "author": "Julian Vazquez, Jake Susskind, Richard Teng, and Romano",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/julianvazq/traffic-camera-finder/issues"
+    "url": "https://github.com/julianvazq/pg-finder/issues"
   },
-  "homepage": "https://github.com/julianvazq/traffic-camera-finder#readme",
+  "homepage": "https://github.com/julianvazq/pg-finder#readme",
   "dependencies": {
     "eslint": "^6.7.2",
     "express": "^4.17.1",

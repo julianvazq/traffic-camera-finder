@@ -1,5 +1,5 @@
-const express = require("express");
-const fetch = require("node-fetch");
+const express = require('express');
+const fetch = require('node-fetch');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -7,16 +7,14 @@ const port = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use(express.static("public"));
+app.use(express.static('public'));
 
 // POST Request
-app.use(express.json({ limit: "1mb" }));
-app.post("/api/speed_post", (req, res) => {
-  console.log("*POST RECEIVED*");
-  console.log(req.body);
+app.use(express.json({ limit: '1mb' }));
+app.post('/api/speed_post', (req, res) => {
   const data = req.body;
   res.json({
-    status: "success",
+    status: 'success',
     iconType: data.iconType,
     latitude: data.latitude,
     longitude: data.longitude
@@ -24,9 +22,9 @@ app.post("/api/speed_post", (req, res) => {
 });
 
 // GET Speed Cameras data
-app.get("/api/speed", (req, res) => {
+app.get('/api/speed', (req, res) => {
   const baseURL =
-    "https://data.princegeorgescountymd.gov/resource/mnkf-cu5c.json";
+    'https://data.princegeorgescountymd.gov/resource/mnkf-cu5c.json';
   fetch(baseURL)
     .then(res => res.json())
     .then(data => {
@@ -37,19 +35,19 @@ app.get("/api/speed", (req, res) => {
         latitude: speedCam.location_1.latitude,
         longitude: speedCam.location_1.longitude
       }));
-      console.log(speedCams);
+      // console.log(speedCams);
       res.send(speedCams);
     })
     .catch(err => {
       console.log(err);
-      res.redirect("/error");
+      res.redirect('/error');
     });
 });
 
 // GET Red Light Cameras data
-app.get("/api/redlight", (req, res) => {
+app.get('/api/redlight', (req, res) => {
   const baseURL =
-    "https://data.princegeorgescountymd.gov/resource/3a3p-zwvz.json";
+    'https://data.princegeorgescountymd.gov/resource/3a3p-zwvz.json';
   fetch(baseURL)
     .then(res => res.json())
     .then(data => {
@@ -58,19 +56,19 @@ app.get("/api/redlight", (req, res) => {
         latitude: redLightCam.location_1.latitude,
         longitude: redLightCam.location_1.longitude
       }));
-      console.log(redLightCams);
+      // console.log(redLightCams);
       res.send(redLightCams);
     })
     .catch(err => {
       console.log(err);
-      res.redirect("/error");
+      res.redirect('/error');
     });
 });
 
 // GET Police Stations
-app.get("/api/police", (req, res) => {
+app.get('/api/police', (req, res) => {
   const baseURL =
-    "https://data.princegeorgescountymd.gov/resource/qkn8-5mhu.json";
+    'https://data.princegeorgescountymd.gov/resource/qkn8-5mhu.json';
   fetch(baseURL)
     .then(res => res.json())
     .then(data => {
@@ -81,19 +79,19 @@ app.get("/api/police", (req, res) => {
         latitude: station.station_address.latitude,
         longitude: station.station_address.longitude
       }));
-      console.log(policeStations);
+      // console.log(policeStations);
       res.send(policeStations);
     })
     .catch(err => {
       console.log(err);
-      res.redirect("/error");
+      res.redirect('/error');
     });
 });
 
 // GET Fire Stations
-app.get("/api/fire", (req, res) => {
+app.get('/api/fire', (req, res) => {
   const baseURL =
-    "https://data.princegeorgescountymd.gov/resource/bzf2-94qx.json";
+    'https://data.princegeorgescountymd.gov/resource/bzf2-94qx.json';
   fetch(baseURL)
     .then(res => res.json())
     .then(data => {
@@ -106,12 +104,12 @@ app.get("/api/fire", (req, res) => {
         latitude: f_station.location_1.latitude,
         longitude: f_station.location_1.longitude
       }));
-      console.log(fireStations);
+      // console.log(fireStations);
       res.send(fireStations);
     })
     .catch(err => {
       console.log(err);
-      res.redirect("/error");
+      res.redirect('/error');
     });
 });
 
