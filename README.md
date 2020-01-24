@@ -185,7 +185,7 @@ Returns fire stations data.
 
 ---
 
-### Todos
+### To dos
 
 - Add hospitals
 - Add farmers markets
