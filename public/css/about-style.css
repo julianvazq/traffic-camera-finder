@@ -16,7 +16,7 @@ body {
     rgba(0, 52, 89, 1) 100%
   );
   color: #fdfdfd;
-  font-family: "Raleway", sans-serif;
+  font-family: 'Raleway', sans-serif;
 }
 
 a {
@@ -26,7 +26,7 @@ a {
 }
 
 .title-mission {
-  font-family: "Oswald", sans-serif;
+  font-family: 'Oswald', sans-serif;
   font-size: 3rem;
   position: relative;
   display: inline-block;
@@ -36,7 +36,7 @@ a {
 }
 
 .title-mission::after {
-  content: "";
+  content: '';
   display: inline-block;
   position: absolute;
   bottom: 0;
@@ -187,6 +187,7 @@ section {
   flex-wrap: wrap;
   padding: 1em;
   box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+  border-radius: 10px;
 }
 
 .member-item {
@@ -197,7 +198,7 @@ section {
   margin: 1.5em 2em;
   padding: 1.5em;
   border: 0.5px solid #003459;
-  /* box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22); */
+  background: hsl(205, 100%, 98%);
 }
 
 .member-item hr {
