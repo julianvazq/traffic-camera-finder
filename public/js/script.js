@@ -194,7 +194,7 @@ const mapSpeedData = async (arg, clearMap = true) => {
       icon: speedCamIcon,
     }).addTo(mymap);
     umd_mark.bindPopup(
-      '<b>SPEED CAMERA</b></br>' +
+      '<b>Speed Camera</b></br>' +
         arg[i].street_address +
         '</br>' +
         '<b>Posted speed</b>: ' +
@@ -224,7 +224,7 @@ const mapRedLightData = (arg, clearMap = true) => {
     umd_mark = L.marker([arg[i].latitude, arg[i].longitude], {
       icon: redLightCamIcon,
     }).addTo(mymap);
-    umd_mark.bindPopup('<b>RED LIGHT CAMERA</b></br>' + arg[i].street_address);
+    umd_mark.bindPopup('<b>Red Light Camera</b></br>' + arg[i].street_address);
     umd_mark.addTo(layer1);
   }
 };
@@ -245,7 +245,7 @@ const mapPoliceData = (arg) => {
       icon: policeIcon,
     }).addTo(mymap);
     umd_mark.bindPopup(
-      '<b>POLICE STATION</b></br>' +
+      '<b>Police Station</b></br>' +
         '<b>Station name</b>: ' +
         arg[i].name +
         '</br>' +
@@ -272,7 +272,7 @@ const mapFireData = (arg) => {
       icon: fireIcon,
     }).addTo(mymap);
     umd_mark.bindPopup(
-      '<b>FIRE STATION</b></br>' +
+      '<b>Fire Station</b></br>' +
         '<b>Station number</b>: ' +
         arg[i].station_number +
         '</br>' +

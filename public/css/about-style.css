@@ -27,6 +27,7 @@ a {
 
 .title-mission {
   font-family: 'Oswald', sans-serif;
+  font-weight: 400;
   font-size: 3rem;
   position: relative;
   display: inline-block;
@@ -168,6 +169,8 @@ section {
   padding: 1em;
   border-radius: 10px;
   box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+  color: #003459;
+  background-color: #fdfdfd;
 }
 
 /* Members */

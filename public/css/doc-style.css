@@ -7,7 +7,7 @@
 body {
   background-color: #003459;
   color: #fdfdfd;
-  font-family: "Raleway", sans-serif;
+  font-family: 'Raleway', sans-serif;
 }
 
 a {
@@ -111,8 +111,9 @@ header {
 }
 
 .title {
-  font-family: "Oswald", sans-serif;
+  font-family: 'Oswald', sans-serif;
   font-size: 3rem;
+  font-weight: 400;
   position: relative;
   display: inline-block;
   padding-bottom: 0.4em;
@@ -121,7 +122,7 @@ header {
 }
 
 .title::after {
-  content: "";
+  content: '';
   display: inline-block;
   position: absolute;
   bottom: 0;

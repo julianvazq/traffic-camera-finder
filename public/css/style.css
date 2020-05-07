@@ -140,6 +140,7 @@ header::before {
 .title {
   font-family: 'Oswald', sans-serif;
   font-size: 3rem;
+  font-weight: 400;
   position: relative;
   display: inline-block;
   padding-bottom: 0.4em;
@@ -295,6 +296,7 @@ button {
   padding: 0.5em 1em;
   color: #fdfdfd;
   background-color: #007ea7;
+  font-weight: 700;
 }
 
 .btn:hover {
@@ -362,7 +364,7 @@ button {
   margin: 1.5em;
   flex-direction: column;
   justify-content: space-evenly;
-  justify-items: center;
+  align-items: stretch;
   height: 200px;
 }
 
@@ -454,16 +456,20 @@ button {
 .summary-list {
   list-style-type: none;
   margin: 2em auto;
+  border-radius: 10px;
+  background: #fdfdfd;
 }
 
 .summary-list li {
   display: flex;
   padding: 2em 1em;
   margin: 1em 0;
-  border-bottom: 1px solid #fdfdfd;
-  background-color: #fdfdfd;
-  color: #003459;
-  border-radius: 10px;
+  color: hsl(205, 90%, 25%);
+  border-bottom: 3px solid hsl(205, 90%, 25%);
+}
+
+.summary-list li:last-child {
+  border-bottom: none;
 }
 
 .summary-list li div {
