@@ -21,7 +21,7 @@
   "dependencies": {
     "eslint": "^6.7.2",
     "express": "^4.17.1",
-    "node-fetch": "^2.6.0"
+    "node-fetch": "^2.6.1"
   },
   "devDependencies": {
     "nodemon": "^1.19.4"
